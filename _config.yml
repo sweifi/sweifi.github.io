@@ -12,7 +12,7 @@ site_theme               : "contrast" # The available themes options are "defaul
 title                    : "Siqi Wei | Associate Professor of Finance"
 title_separator          : "-"
 name                     : &name "Siqi Wei"
-description              : &description "Academic portfolio of Siqi Wei, Associate Professor of Finance at California State University, Northridge"
+description              : &description "Siqi Wei, Associate Professor of Finance at California State University, Northridge"
 url                      : https://sweifi.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "sweifi/sweifi.github.io"
@@ -25,7 +25,7 @@ author:
   avatar           : "Profile.png"
   name             : "Siqi Wei"
   pronouns         : # example: "she/her"
-  bio              : "Stelmar Family Faculty Fellow and Associate Professor of Finance at CSUN's David Nazarian College of Business and Economics. Associate Director, Center for Asian Finance and Business Research."
+  bio              : "Stelmar Family Faculty Fellow and Associate Professor of Finance at California State University Northridge. Associate Director, Center for Asian Finance and Business Research."
   location         : "Northridge, CA"
   employer         : "California State University, Northridge"
   uri              : https://sweifi.github.io
