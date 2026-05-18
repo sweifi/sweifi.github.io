@@ -9,9 +9,9 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "air" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Siqi Wei | Associate Professor of Finance"
+title                    : "Siqi Wei, Ph.D. | Associate Professor of Finance"
 title_separator          : "-"
-name                     : &name "Siqi Wei"
+name                     : &name "Siqi Wei, Ph.D."
 description              : &description "Siqi Wei, Associate Professor of Finance at California State University, Northridge"
 url                      : https://sweifi.github.io
 # baseurl                  : "" # the subpath of your site, e.g. "/blog"
