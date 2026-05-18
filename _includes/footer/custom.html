@@ -1,7 +1,11 @@
 <style>
   .page__footer-follow { display: none !important; }
-  .page__footer-copyright { display: none !important; }
 </style>
-<p style="text-align:center; font-size:0.8em; color:#fff; margin:0; padding:0.5em 0;">
-  &copy; {{ site.time | date: '%Y' }} Siqi Wei
-</p>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var copyright = document.querySelector('.page__footer-copyright');
+    if (copyright) {
+      copyright.innerHTML = '&copy; ' + new Date().getFullYear() + ' Siqi Wei';
+    }
+  });
+</script>
