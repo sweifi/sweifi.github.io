@@ -22,7 +22,7 @@ repository               : "sweifi/sweifi.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.jpg"
+  avatar           : "Profile.png"
   name             : "Siqi Wei"
   pronouns         : # example: "she/her"
   bio              : "Stelmar Family Faculty Fellow and Associate Professor of Finance at CSUN's David Nazarian College of Business and Economics. Associate Director, Center for Asian Finance and Business Research."
