@@ -100,6 +100,8 @@ Summer Liu, William Megginson, Nancy Tran, and **Siqi Wei**
 *Finance Research Letters*, 104806, 2023  
 [DOI: 10.1016/j.frl.2023.104806](https://doi.org/10.1016/j.frl.2023.104806)
 
+- ⭐ Featured in the U.S. Securities and Exchange Commission (SEC) Small Business Advocates Report 2023 to Congress
+
 ---
 
 **[7] "Does the investment horizon of institutional investors matter for stock liquidity?"**  
