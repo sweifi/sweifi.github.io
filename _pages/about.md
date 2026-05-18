@@ -7,9 +7,13 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to my page. I am the **Stelmar Family Faculty Fellow** and **Associate Professor of Finance** at [CSUN's David Nazarian College of Business and Economics](https://www.csun.edu/nazarian) and Associate Director of the [Center for Asian Finance and Business Research](https://www.csun.edu/nazarian).
+Welcome to my page. I am the **Stelmar Family Faculty Fellow and Associate Professor of Finance** at [David Nazarian College of Business and Economics](https://www.csun.edu/nazarian) at California State University Northridge. I also serve as the Associate Director of the Center for Asian Finance and Business Research. My research examines how information, incentives, and policy shape capital markets, firm behavior, and real economic outcomes, especially under economic uncertainty and technological change. A central theme of my work is how capital allocation and policy design affect market efficiency, investor decision-making, employment, and human-capital formation.
 
-My research spans investments, corporate, and capital markets, and I have recently become interested in human capital. Broadly, I enjoy studying how people, institutions, and financial markets interact, and how these connections shape important decisions and outcomes.
+My current research focuses on the economic consequences of modern technologies. These projects examine how modern technology induces unintended corporate consequences, how generative AI may alter childhood skill formation through cognitive delegation, and how emerging technology adoption reshapes the employment effects of tax incentives. Together, they connect technological disruption to corporate accountability, labor-market restructuring, and long-run developmental capacity formation.
+
+My published work studies capital-market efficiency, corporate financing, legal risk, banking shocks, and individual behavior through the common lens of information, incentives, and institutional frictions. My research has been presented at major conferences, including *FMA*, *AAA*, *SWFA*, *SFA*, and *CICF*, and has been featured by *Bloomberg*, *Columbia Law School's Blue Sky Blog*, and the *SEC Small Business Advocates Report to U.S. Congress*. My work has been published in the Journal of Corporate Finance, Emerging Markets Review, Journal of Behavioral and Experimental Finance, and other finance and economic journals.
+
+I received my Ph.D. in Finance from Oklahoma State University. Before joining CSUN, I served as a risk management specialist at the Industrial and Commercial Bank of China–US in New York City.
 
 ---
 
