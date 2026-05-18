@@ -35,7 +35,7 @@ We examine whether the adoption of automation technologies influences environmen
 ---
 
 **[2] "Cognitive Delegation in Childhood: A Theory of Skill Formation under Generative AI"**  
-with [Naying Zhou](https://www.linkedin.com/in/nayingzhou)
+with [Naying Zhou](https://www.linkedin.com/in/nayingzhou) &nbsp; <a href="/files/Cognitive Delegation.pdf"><i class="fas fa-file-pdf" style="color:red;"></i> PDF</a>
 
 <details>
 <summary><em>Abstract</em></summary>
