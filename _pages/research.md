@@ -68,72 +68,61 @@ Conventional wisdom holds that tax incentives boost employment by lowering costs
 
 ## Publications
 
-**[1] "Share pledging and stock price synchronicity: Evidence from China"**  
-Yanbo Jin, **Siqi Wei**, and Jian Xu  
-*Emerging Markets Review*, 101258, 2025  
-[DOI: 10.1016/j.ememar.2025.101258](https://doi.org/10.1016/j.ememar.2025.101258)
+**[1]** "Share pledging and stock price synchronicity: Evidence from China" &nbsp;<a href="https://doi.org/10.1016/j.ememar.2025.101258"><i class="fas fa-link"></i> DOI</a>  
+with Yanbo Jin and Jian Xu  
+*Emerging Markets Review*, 101258, 2025
 
 ---
 
-**[2] "Kick the cat? Retail investors displaced aggression: Evidence from Amazon product ratings"**  
-**Siqi Wei** and Yanhui Zhao  
-*Journal of Behavioral and Experimental Finance*, 101058, 2025  
-[DOI: 10.1016/j.jbef.2025.101058](https://doi.org/10.1016/j.jbef.2025.101058)
+**[2]** "Kick the cat? Retail investors displaced aggression: Evidence from Amazon product ratings" &nbsp;<a href="https://doi.org/10.1016/j.jbef.2025.101058"><i class="fas fa-link"></i> DOI</a>  
+with Yanhui Zhao  
+*Journal of Behavioral and Experimental Finance*, 101058, 2025
 
 ---
 
-**[3] "Can long-term institutional owners improve market efficiency in parsing complex legal disputes?"**  
-Paul Borochin, Xiaoqiong Wang, and **Siqi Wei**  
-*International Review of Economics & Finance*, 96, 103690, 2024  
-[DOI: 10.1016/j.iref.2024.103690](https://doi.org/10.1016/j.iref.2024.103690)
+**[3]** "Can long-term institutional owners improve market efficiency in parsing complex legal disputes?" &nbsp;<a href="https://doi.org/10.1016/j.iref.2024.103690"><i class="fas fa-link"></i> DOI</a>  
+with Paul Borochin and Xiaoqiong Wang  
+*International Review of Economics & Finance*, 96, 103690, 2024
 
 ---
 
-**[4] "Economic policy uncertainty and heterogeneous institutional investor horizons"**  
-Xiaoqiong Wang, **Siqi Wei**, and Xiaoyang Zhu  
-*Review of Quantitative Finance and Accounting*, 62(1), 39–67, 2024  
-[DOI: 10.1007/s11156-023-01191-y](https://doi.org/10.1007/s11156-023-01191-y)
+**[4]** "Economic policy uncertainty and heterogeneous institutional investor horizons" &nbsp;<a href="https://doi.org/10.1007/s11156-023-01191-y"><i class="fas fa-link"></i> DOI</a>  
+with Xiaoqiong Wang and Xiaoyang Zhu  
+*Review of Quantitative Finance and Accounting*, 62(1), 39–67, 2024
 
 ---
 
-**[5] "Stand in the wind: Market power reformation during uncertain periods"**  
-Heng Wang, **Siqi Wei**, and Xiaoyang Zhu  
-*International Review of Economics & Finance*, 84, 12–28, 2023  
-[DOI: 10.1016/j.iref.2022.10.026](https://doi.org/10.1016/j.iref.2022.10.026)
+**[5]** "Stand in the wind: Market power reformation during uncertain periods" &nbsp;<a href="https://doi.org/10.1016/j.iref.2022.10.026"><i class="fas fa-link"></i> DOI</a>  
+with Heng Wang and Xiaoyang Zhu  
+*International Review of Economics & Finance*, 84, 12–28, 2023
 
 ---
 
-**[6] "Who Loses Most When Big Banks Suddenly Fail? Evidence from Silicon Valley Bank Collapse"**  
-Summer Liu, William Megginson, Nancy Tran, and **Siqi Wei**  
+**[6]** "Who Loses Most When Big Banks Suddenly Fail? Evidence from Silicon Valley Bank Collapse" &nbsp;<a href="https://doi.org/10.1016/j.frl.2023.104806"><i class="fas fa-link"></i> DOI</a>  
+with Summer Liu, William Megginson, and Nancy Tran  
 *Finance Research Letters*, 104806, 2023  
-[DOI: 10.1016/j.frl.2023.104806](https://doi.org/10.1016/j.frl.2023.104806)
-
 - ⭐ Featured in the U.S. Securities and Exchange Commission (SEC) Small Business Advocates Report 2023 to Congress
 
 ---
 
-**[7] "Does the investment horizon of institutional investors matter for stock liquidity?"**  
-Xiaoqiong Wang and **Siqi Wei**  
-*International Review of Financial Analysis*, 74, 101648, 2021  
-[DOI: 10.1016/j.irfa.2020.101648](https://doi.org/10.1016/j.irfa.2020.101648)
+**[7]** "Does the investment horizon of institutional investors matter for stock liquidity?" &nbsp;<a href="https://doi.org/10.1016/j.irfa.2020.101648"><i class="fas fa-link"></i> DOI</a>  
+with Xiaoqiong Wang  
+*International Review of Financial Analysis*, 74, 101648, 2021
 
 ---
 
-**[8] "Are US firms using more short-term debt?"**  
-Seong K. Byun, Zhilu Lin, and **Siqi Wei**  
-*Journal of Corporate Finance*, 69, 102012, 2021  
-[DOI: 10.1016/j.jcorpfin.2021.102012](https://doi.org/10.1016/j.jcorpfin.2021.102012)
+**[8]** "Are US firms using more short-term debt?" &nbsp;<a href="https://doi.org/10.1016/j.jcorpfin.2021.102012"><i class="fas fa-link"></i> DOI</a>  
+with Seong K. Byun and Zhilu Lin  
+*Journal of Corporate Finance*, 69, 102012, 2021
 
 ---
 
-**[9] "Shareholder litigation and the risk incentive effect of executive compensation: A re-examination"**  
-Isarin Durongkadej, **Siqi Wei**, and Ramesh Rao  
-*Finance Research Letters*, 41, 101790, 2021  
-[DOI: 10.1016/j.frl.2020.101790](https://doi.org/10.1016/j.frl.2020.101790)
+**[9]** "Shareholder litigation and the risk incentive effect of executive compensation: A re-examination" &nbsp;<a href="https://doi.org/10.1016/j.frl.2020.101790"><i class="fas fa-link"></i> DOI</a>  
+with Isarin Durongkadej and Ramesh Rao  
+*Finance Research Letters*, 41, 101790, 2021
 
 ---
 
-**[10] "COVID-19 and women-led businesses around the world"**  
-Yu Liu, **Siqi Wei**, and Jian Xu  
-*Finance Research Letters*, 43, 102012, 2021  
-[DOI: 10.1016/j.frl.2021.102012](https://doi.org/10.1016/j.frl.2021.102012)
+**[10]** "COVID-19 and women-led businesses around the world" &nbsp;<a href="https://doi.org/10.1016/j.frl.2021.102012"><i class="fas fa-link"></i> DOI</a>  
+with Yu Liu and Jian Xu  
+*Finance Research Letters*, 43, 102012, 2021
