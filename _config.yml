@@ -8,13 +8,13 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "air" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Siqi Wei, Ph.D. | Associate Professor of Finance"
+site_theme               : "contrast" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+title                    : "Siqi Wei | Finance Professor"
 title_separator          : "-"
-name                     : &name "Siqi Wei, Ph.D."
-description              : &description "Siqi Wei, Ph.D., Associate Professor of Finance at California State University, Northridge"
+name                     : &name "Siqi Wei"
+description              : &description "Academic portfolio of Siqi Wei, Associate Professor of Finance at California State University, Northridge"
 url                      : https://sweifi.github.io
-# baseurl                  : "" # the subpath of your site, e.g. "/blog"
+baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "sweifi/sweifi.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
@@ -25,10 +25,10 @@ author:
   avatar           : "Profile.png"
   name             : "Siqi Wei"
   pronouns         : # example: "she/her"
-  bio              : "Stelmar Family Faculty Fellow and Associate Professor of Finance at California State University Northridge. Associate Director, Center for Asian Finance and Business Research."
-  location         : "Los Angeles, CA, USA."
+  bio              : "Stelmar Family Faculty Fellow and Associate Professor of Finance at CSUN's David Nazarian College of Business and Economics. Associate Director, Center for Asian Finance and Business Research."
+  location         : "Northridge, CA"
   employer         : "California State University, Northridge"
-  uri              : https://sweifi.github.io
+  uri              : https://www.csun.edu/nazarian/finance/faculty-staff/tenuredtenure-track-faculty
   email            : "siqi.wei@csun.edu"
 
   # Academic websites
