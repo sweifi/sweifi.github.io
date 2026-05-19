@@ -3,7 +3,7 @@ permalink: /research/
 title: "Research"
 author_profile: true
 ---
-<a id="wp1"></a>
+
 ## Research Interests
 
 Investments &nbsp;·&nbsp; Capital Markets &nbsp;·&nbsp; Human Capital &nbsp;·&nbsp; Public Finance
@@ -12,7 +12,7 @@ Investments &nbsp;·&nbsp; Capital Markets &nbsp;·&nbsp; Human Capital &nbsp;·
 
 ## Working Papers
 
-<a id="wp2"></a>
+<a id="wp1"></a>
 **[1] "When Automation Meets Accountability: International Evidence from Robotics Adoption and ESG Incidents"**  
 with [Sadok El Ghoul](https://apps.ualberta.ca/directory/person/elghoul#Publications), [Summer Liu](https://robins.richmond.edu/faculty/sliu/), and [Omrane Guedhami](https://sc.edu/study/colleges_schools/moore/directory/guedhami_omrane.php)
 
@@ -34,8 +34,8 @@ We examine whether the adoption of automation technologies influences environmen
 - University of Richmond Seminar, 2025
 
 ---
-<a id="wp3"></a>
 
+<a id="wp2"></a>
 **[2] "Cognitive Delegation in Childhood: A Theory of Skill Formation under Generative AI"**  
 with [Naying Zhou](https://www.linkedin.com/in/nayingzhou) &nbsp; <a href="/files/Cognitive Delegation.pdf"><i class="fas fa-file-pdf" style="color:red;"></i> PDF</a>
 
@@ -46,9 +46,14 @@ We develop a dynamic theory of childhood human-capital formation under generativ
 </p>
 </details>
 
+<p style="margin-top:1em;"><em>A picture is worth more than a thousand equations.</em></p>
+<a href="/images/cognitive-delegation.png" target="_blank">
+  <img src="/images/cognitive-delegation.png" alt="The Capacity Wedge: How Generative AI Reshapes Childhood Development" style="width:100%; max-width:720px; border-radius:6px; border:1px solid #ddd; margin-top:0.3em;">
+</a>
+
 ---
 
-
+<a id="wp3"></a>
 **[3] "Tax Cuts and Missing Jobs"**  
 with Bei Gao, Kun Yang, Lihuan Chen, and Xiaoyang Zhu
 
