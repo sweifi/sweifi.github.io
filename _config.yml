@@ -15,7 +15,7 @@ name                     : &name "Siqi Wei"
 description              : &description "Siqi Wei,Ph.D., Associate Professor of Finance at California State University, Northridge"
 url                      : https://sweifi.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "sweifi/sweifi.github.io"
+repository               : #"sweifi/sweifi.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
