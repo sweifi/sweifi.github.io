@@ -20,10 +20,10 @@ I received my Ph.D. in Finance from Oklahoma State University. Before joining CS
 ## Contact
 
 <div style="margin-top: 0.5em;">
-  <a href="mailto:siqi.wei@csun.edu" style="display:inline-block; margin:4px; padding:7px 16px; background:#444; color:#fff; border-radius:5px; text-decoration:none; font-size:0.88em;">✉ Email</a>
-  <a href="https://www.linkedin.com/in/cksiqiwei/" style="display:inline-block; margin:4px; padding:7px 16px; background:#0077B5; color:#fff; border-radius:5px; text-decoration:none; font-size:0.88em;">in LinkedIn</a>
-  <a href="https://scholar.google.com/citations?user=30jvSc8AAAAJ&hl=en" style="display:inline-block; margin:4px; padding:7px 16px; background:#4285F4; color:#fff; border-radius:5px; text-decoration:none; font-size:0.88em;">🎓 Google Scholar</a>
-  <a href="https://orcid.org/0000-0002-2693-7446" style="display:inline-block; margin:4px; padding:7px 16px; background:#A6CE39; color:#fff; border-radius:5px; text-decoration:none; font-size:0.88em;">ID ORCID</a>
+  <a href="mailto:siqi.wei@csun.edu" style="display:inline-block; margin:4px; padding:7px 16px; background:#444; color:#fff; border-radius:5px; text-decoration:none; font-size:0.88em;"><i class="fas fa-envelope"></i> Email</a>
+  <a href="https://www.linkedin.com/in/cksiqiwei/" style="display:inline-block; margin:4px; padding:7px 16px; background:#0077B5; color:#fff; border-radius:5px; text-decoration:none; font-size:0.88em;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  <a href="https://scholar.google.com/citations?user=30jvSc8AAAAJ&hl=en" style="display:inline-block; margin:4px; padding:7px 16px; background:#4285F4; color:#fff; border-radius:5px; text-decoration:none; font-size:0.88em;"><i class="ai ai-google-scholar"></i> Google Scholar</a>
+  <a href="https://orcid.org/0000-0002-2693-7446" style="display:inline-block; margin:4px; padding:7px 16px; background:#A6CE39; color:#fff; border-radius:5px; text-decoration:none; font-size:0.88em;"><i class="ai ai-orcid"></i> ORCID</a>
 </div>
 
 <p style="margin-top:1em; font-size:0.88em;">📍 Bookstein Hall 4106, 18111 Nordhoff St, Northridge CA 91330</p>
