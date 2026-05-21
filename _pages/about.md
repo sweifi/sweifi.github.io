@@ -17,6 +17,12 @@ I received my Ph.D. in Finance from Oklahoma State University. Before joining CS
 
 ---
 
+## Research Spotlight
+
+<iframe src="/files/pdv_animated_map.html" width="100%" height="620px" 
+  frameborder="0" style="border-radius:8px; border:1px solid #ddd;">
+</iframe>
+
 ## Contact
 
 <div style="margin-top: 0.5em;">
