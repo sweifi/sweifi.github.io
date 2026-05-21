@@ -22,7 +22,7 @@ I received my Ph.D. in Finance from Oklahoma State University. Before joining CS
 
 <iframe src="/files/pdv_animated_map.html" width="100%" height="880px" frameborder="0" scrolling="no" style="border:none; margin-top:0.5em; display:block;"></iframe>
 
-- ***"The Legibility Premium: Public Data Visibility and the Allocation of Competitive Federal Grants"*** with Xiaoyang Zhu
+- ***"The Legibility Premium: Public Data Visibility and the Allocation of Competitive Federal Grants"*** Siqi Wei and Xiaoyang Zhu
 
 
 ## Contact
