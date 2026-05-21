@@ -17,6 +17,7 @@ I received my Ph.D. in Finance from Oklahoma State University. Before joining CS
 
 ---
 
+
 ## Research Spotlight
 
 **"The Legibility Premium: Public Data Visibility and the Allocation of Competitive Federal Grants"**  
