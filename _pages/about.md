@@ -11,7 +11,7 @@ Welcome to my page. I am the **Stelmar Family Faculty Fellow** and **Associate P
 
 My [**current research**](/research/#working-papers) focuses on the economic consequences of modern technologies. These projects examine how technology adoption can generate [**unintended corporate outcomes**](/research/#wp1), how generative AI may alter childhood skill formation through [**cognitive delegation**](/research/#wp2), and how emerging technologies reshape the [**employment effects of tax incentives**](/research/#wp3). Together, they connect technological disruption to corporate accountability, labor-market restructuring, and long-run developmental capacity formation.
 
-My published work studies institutions, corporations, legal risk, banking shocks, and individual behavior through the common lens of information, incentives, and institutional frictions. My research has been presented at major conferences, including *FMA*, *AAA*, *SWFA*, *SFA*, *CICF*, and others, and has been featured by **Bloomberg**, **Columbia Law School's Blue Sky Blog**, and the **SEC Small Business Advocates Report to U.S. Congress**. My work has been published in the Journal of Corporate Finance, Emerging Markets Review, Journal of Behavioral and Experimental Finance, and other finance journals.
+My published work studies institutions, corporations, legal risk, and individual behavior through the common lens of information, incentives, and institutional frictions. My research has been presented at major conferences, including *FMA*, *AAA*, *SWFA*, *SFA*, *CICF*, and others, and has been featured by **Bloomberg**, **Columbia Law School's Blue Sky Blog**, and the **SEC Small Business Advocates Report to U.S. Congress**. My work has been published in the Journal of Corporate Finance, Emerging Markets Review, Journal of Behavioral and Experimental Finance, and other finance journals.
 
 I received my Ph.D. in Finance from Oklahoma State University. Before joining CSUN, I served as a risk management specialist at the Industrial and Commercial Bank of China–US in New York City.
 
@@ -19,9 +19,11 @@ I received my Ph.D. in Finance from Oklahoma State University. Before joining CS
 
 ## Research Spotlight
 
-<iframe src="/files/pdv_animated_map.html" width="100%" height="620px" 
-  frameborder="0" style="border-radius:8px; border:1px solid #ddd;">
-</iframe>
+**"The Legibility Premium: Public Data Visibility and the Allocation of Competitive Federal Grants"**  
+with Xiaoyang Zhu
+
+<iframe src="/files/pdv_animated_map.html" width="100%" height="880px" frameborder="0" scrolling="no" style="border:none; margin-top:0.5em; display:block;"></iframe>
+
 
 ## Contact
 
