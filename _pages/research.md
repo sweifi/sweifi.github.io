@@ -51,10 +51,17 @@ This paper develops a dynamic theory of childhood human-capital formation when a
   <img src="/images/cognitive-delegation.png" alt="The Capacity Wedge: How Generative AI Reshapes Childhood Development" style="width:100%; max-width:720px; border-radius:6px; border:1px solid #ddd; margin-top:0.3em;">
 </a>
 
+
 ---
 
 <a id="wp3"></a>
-**[3] "Tax Cuts and Missing Jobs"**  
+**[3] "The Legibility Premium: Public Data Visibility and the Allocation of Competitive Federal Grants"**  
+with Xiaoyang Zhu
+
+---
+
+<a id="wp4"></a>
+**[4] "Tax Cuts and Missing Jobs"**  
 with Bei Gao, Kun Yang, Lihuan Chen, and Xiaoyang Zhu
 
 <details>
