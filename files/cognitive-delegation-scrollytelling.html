@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cognitive Delegation in Childhood &mdash; A Research Spotlight</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1520; --bg2:#101d2e; --bg3:#162031;
+  --blue:#60a5fa; --green:#34d399; --amber:#fbbf24; --red:#f87171;
+  --violet:#a78bfa; --teal:#2dd4bf; --pink:#f472b6;
+  --muted:#7a8fa8; --dim:#3d5166; --border:rgba(255,255,255,.08);
+  --text:#dde4ef; --white:#fff;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,Arial,sans-serif;line-height:1.6}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 24px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 38%,rgba(96,165,250,.10) 0%,transparent 70%),
+             radial-gradient(ellipse 50% 40% at 80% 78%,rgba(251,191,36,.06) 0%,transparent 60%),
+             radial-gradient(ellipse 40% 40% at 16% 82%,rgba(167,139,250,.06) 0%,transparent 60%)}
+.hero-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--blue);margin-bottom:20px;font-weight:600}
+.hero h1{font-size:clamp(34px,6.6vw,72px);font-weight:900;letter-spacing:-.04em;color:var(--white);line-height:1.05;margin-bottom:24px;max-width:940px}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero-sub{font-size:clamp(15px,2vw,19px);color:var(--muted);max-width:680px;line-height:1.65;margin-bottom:22px}
+.hero-byline{font-size:13.5px;color:var(--muted);letter-spacing:.01em;margin:0 auto 40px;max-width:660px;line-height:1.75}
+.hero-byline strong{color:var(--white);font-weight:700}
+.hero-byline .affil{color:var(--amber)}
+.hero-byline .paper-title{display:inline-block;margin-top:6px;color:var(--blue);text-decoration:none;font-style:italic;
+  border-bottom:1px solid rgba(96,165,250,.4);transition:border-color .2s,color .2s}
+.hero-byline .paper-title:hover{color:#93c5fd;border-color:rgba(96,165,250,.8)}
+.hero-byline .paper-pill{color:var(--pink);text-decoration:none;font-weight:700;font-style:normal;white-space:nowrap;
+  margin-left:6px;transition:color .2s}
+.hero-byline .paper-pill:hover{color:#f9a8d4;text-decoration:underline}
+.name-link{color:var(--white)!important;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.5);transition:color .2s,border-color .2s}
+.name-link:hover{color:#fff!important;border-bottom-color:rgba(255,255,255,.95)}
+.scroll-cue{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--dim);font-size:12px;letter-spacing:.08em;text-transform:uppercase;animation:bob 2s ease-in-out infinite}
+.scroll-cue svg{width:20px;height:20px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* LEDE / MOTIVATION */
+.lede{max-width:740px;margin:0 auto;padding:30px 24px 70px;text-align:center}
+.lede-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--amber);font-weight:700;margin-bottom:18px}
+.lede p{font-size:clamp(16px,2.1vw,20px);color:var(--text);line-height:1.7;margin-bottom:18px;font-weight:300}
+.lede p.turn{color:var(--muted);font-size:clamp(15px,1.9vw,18px)}
+.lede em{font-style:italic;color:#cdd7e6}
+.lede strong{color:var(--white);font-weight:600}
+
+/* SCROLLY LAYOUT */
+.scrolly{display:flex;align-items:flex-start;max-width:1300px;margin:0 auto;padding:0 24px}
+.narrative{width:44%;padding:0 40px 0 0;flex-shrink:0}
+.sticky-viz{width:56%;position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center}
+.viz-inner{width:100%;max-width:600px;padding:24px}
+
+/* STEP SECTIONS */
+.step{min-height:90vh;display:flex;align-items:center;padding:80px 0;opacity:.3;transition:opacity .6s ease}
+.step.active{opacity:1}
+.step-inner{max-width:480px}
+.step-num{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--blue);font-weight:700;margin-bottom:12px}
+.step h2{font-size:clamp(22px,3vw,32px);font-weight:900;letter-spacing:-.03em;color:var(--white);margin-bottom:16px;line-height:1.2}
+.step p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:14px}
+.step .var{color:#cdd7e6;font-style:italic}
+.stat-callout{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin:20px 0;display:flex;align-items:baseline;gap:12px}
+.stat-callout .big{font-size:clamp(28px,4.2vw,46px);font-weight:900;letter-spacing:-.03em;line-height:1}
+.stat-callout .unit{font-size:15px;color:var(--muted);line-height:1.4}
+.highlight-red{color:var(--red)} .highlight-blue{color:var(--blue)}
+.highlight-amber{color:var(--amber)} .highlight-green{color:var(--green)}
+.highlight-violet{color:var(--violet)} .highlight-teal{color:var(--teal)}
+
+/* CHART PANELS */
+.chart-panel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .5s ease;pointer-events:none;padding:20px}
+.chart-panel.visible{opacity:1;pointer-events:auto}
+.chart-wrap{position:relative;width:100%;max-width:560px}
+.chart-title{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:12px;font-weight:600;text-align:center}
+.chart-sub{font-size:11.5px;color:var(--dim);margin-top:10px;line-height:1.5;text-align:center}
+
+/* CONCLUSION */
+.conclusion{max-width:800px;margin:0 auto;padding:100px 24px}
+.conclusion h2{font-size:clamp(26px,4vw,42px);font-weight:900;letter-spacing:-.03em;color:var(--white);margin-bottom:24px;text-align:center;line-height:1.15}
+.conclusion p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:18px}
+.conclusion p strong{color:var(--text)}
+.conclusion .closer{font-size:clamp(17px,2.2vw,21px);color:var(--text);font-weight:300;line-height:1.6;border-left:2px solid var(--blue);padding-left:20px;margin:30px 0}
+.domain-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:34px 0}
+.pill{background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:20px;padding:7px 16px;font-size:13px;color:var(--text)}
+.pill.key{background:rgba(96,165,250,.12);border-color:rgba(96,165,250,.32);color:#bfdbfe}
+.pill.warn{background:rgba(251,191,36,.10);border-color:rgba(251,191,36,.30);color:#fde68a}
+.citation{margin-top:50px;padding:28px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:16px;font-size:13px;color:var(--dim);line-height:1.75;text-align:left}
+.citation a{color:var(--blue);text-decoration:none}
+.citation a.paper-link{font-style:italic;border-bottom:1px solid rgba(96,165,250,.4)}
+.citation a.paper-link:hover{color:#93c5fd}
+.citation .auth{color:var(--white);font-weight:700}
+.citation .affil{color:var(--amber)}
+.citation strong{color:var(--text)}
+
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:4px}
+
+/* ── MOBILE: pin the graphic on top, let the narrative flow beneath ── */
+@media(max-width:820px){
+  .scrolly{flex-direction:column;padding:0 16px}
+  .sticky-viz{order:-1;width:100%;height:auto;position:sticky;top:0;z-index:20;
+    background:var(--bg);padding:10px 0 8px;border-bottom:1px solid var(--border);
+    box-shadow:0 10px 18px -10px rgba(0,0,0,.7)}
+  .viz-inner{height:42vh !important;max-width:560px;margin:0 auto;padding:4px}
+  .narrative{width:100%;padding:0}
+  .step{min-height:64vh;padding:26px 2px;opacity:.32}
+  .step-inner{max-width:none}
+  .chart-title{font-size:10.5px;margin-bottom:6px}
+  .chart-sub{font-size:10px;margin-top:6px}
+  .hero{min-height:92vh}
+  .hero h1{font-size:clamp(30px,8.8vw,52px)}
+  .hero-byline{font-size:12.5px}
+  .lede{padding:20px 18px 50px}
+  .stat-callout{padding:16px 18px}
+  .conclusion{padding:64px 18px}
+}
+@media(max-width:420px){
+  .viz-inner{height:38vh !important}
+  .step{min-height:60vh}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div style="position:relative;z-index:1">
+    <div class="hero-eyebrow">Economics of Skill Formation under Generative AI &mdash; A Research Spotlight</div>
+    <h1>The output looks the same.<br>The <em>child</em> does not.</h1>
+    <p class="hero-sub">Generative AI lets a child obtain the essay, the answers, the analysis &mdash; without performing the
+       cognitive work the assignment was built to elicit. A dynamic theory of skill formation asks when that
+       <strong style="color:var(--white)">cognitive delegation</strong> is harmless, when it isn't, and what governs the difference.</p>
+    <div class="hero-byline">featuring the work of <strong><a class="name-link" href="https://sweifi.github.io/" target="_blank" rel="noopener">Siqi Wei</a></strong> <span class="affil">(California State University Northridge)</span> and
+       <strong>Naying Zhou</strong> <span class="affil">(Keck School of Medicine at University of Southern California)</span>.
+       <a class="paper-title" href="https://sweifi.github.io/files/CognitiveDelegation(WeiZhou).pdf" target="_blank" rel="noopener">Cognitive Delegation in Childhood: A Theory of Skill Formation under Generative AI</a><a class="paper-pill" href="https://sweifi.github.io/files/CognitiveDelegation(WeiZhou).pdf" target="_blank" rel="noopener">(Paper Link)</a></div>
+    <div class="scroll-cue">
+      <span>Scroll to explore</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- LEDE / MOTIVATION (grounded in real coverage) -->
+<section class="lede">
+  <div class="lede-kicker">The debate so far</div>
+  <p>When ChatGPT arrived, <em>The Atlantic</em> announced that &ldquo;the college essay is dead.&rdquo; New York City&rsquo;s
+     school system &mdash; the nation&rsquo;s largest &mdash; <strong>banned</strong> the tool in January 2023, then
+     <strong>reversed course</strong> four months later, conceding the ban had &ldquo;overlooked the potential.&rdquo; Adoption,
+     meanwhile, raced ahead: the share of U.S. teens using ChatGPT for schoolwork <strong>doubled in a single year</strong> &mdash;
+     from 13% in 2023 to 26% in 2024 &mdash; and by 2025 more than half of teens reported turning to chatbots for schoolwork.</p>
+  <p class="turn">The argument has fixated on <em>cheating</em> and <em>access</em>: who uses it, who can detect it, who should
+     ban it. This paper asks a different question &mdash; not whether children use AI, but what its use does to the formation of
+     the mind.</p>
+</section>
+
+<!-- SCROLLY BODY -->
+<div class="scrolly">
+  <div class="narrative">
+
+    <section class="step" data-chart="boundary" id="step-1">
+      <div class="step-inner">
+        <div class="step-num">The Conceptual Move</div>
+        <h2>Two ways to use the same machine</h2>
+        <p>For two centuries, schooling worked because the technology of producing output <em>enforced</em> the underlying
+           process: to finish the problem set, a child had to think. Generative AI breaks that link &mdash; the same output can
+           now arise from <strong style="color:var(--white)">active engagement</strong> or from <strong style="color:var(--white)">passive
+           reception</strong>.</p>
+        <p>The model makes that distinction a primitive. Each period a child chooses effort <span class="var">e</span>,
+           delegation <span class="var">a</span>, and verification <span class="var">v</span>. A
+           <strong style="color:var(--white)">governance function</strong> &phi;(e&#8201;;&#8201;g) &mdash; weakly increasing in both
+           arguments, with &phi;(0&#8201;;&#8201;g)=0 &mdash; sets the process-preservation threshold. A canonical
+           &ldquo;first-attempt rule&rdquo; lets AI scale with the child&rsquo;s own prior effort.</p>
+        <div class="stat-callout">
+          <span class="big highlight-blue">&phi;(e&#8201;;&#8201;g)</span>
+          <span class="unit">the process-preservation<br>threshold &mdash; below it AI is a tutor,<br>above it a substitute</span>
+        </div>
+        <p>Raising governance <span class="var">g</span> lifts the boundary, so more of a child&rsquo;s AI use stays on the
+           process-preserving side.</p>
+      </div>
+    </section>
+
+    <section class="step" data-chart="decomp" id="step-2">
+      <div class="step-inner">
+        <div class="step-num">The Main Result</div>
+        <h2>The capacity wedge splits in two</h2>
+        <p>The child accumulates three capital stocks &mdash; <strong style="color:var(--white)">knowledge</strong>
+           <span class="var">h</span>, <strong style="color:var(--white)">discipline</strong> <span class="var">D</span>, and
+           <strong style="color:var(--white)">judgment</strong> <span class="var">J</span> &mdash; that enter output through a CES
+           technology and are dynamically complementary. When AI <em>replaces</em> the process rather than supporting it, a wedge
+           opens between the active-engagement counterfactual <span class="var">W</span><sub>active</sub> and realized welfare
+           <span class="var">W</span><sub>R</sub>.</p>
+        <div class="stat-callout">
+          <span class="big highlight-amber">C<sub>contemp</sub> + C<sub>cascade</sub></span>
+          <span class="unit">a contemporaneous discipline cost<br>plus a cascade cost from downstream<br>knowledge complementarities</span>
+        </div>
+        <p>The <strong style="color:var(--white)">Capacity-Wedge Decomposition</strong> (Theorem 1) shows the wedge is exactly
+           additive. The first term is the discipline a child fails to build by skipping the struggle. The second is the
+           <strong style="color:var(--white)">cascade</strong>: foundational knowledge missed today is an input into all later
+           learning, so the deficit propagates down the curricular sequence &mdash; and in typical parameter regions it is the
+           larger term.</p>
+      </div>
+    </section>
+
+    <section class="step" data-chart="trajectory" id="step-3">
+      <div class="step-inner">
+        <div class="step-num">The Cascade in Motion</div>
+        <h2>Two children, one starting point, diverging lives</h2>
+        <p>Begin two identical children at the same capacity. One uses AI to support her own engagement; the other delegates the
+           cognitive work. The contemporaneous gap looks small &mdash; but it does not stay small.</p>
+        <p>This is <strong style="color:var(--white)">self-productivity and dynamic complementarity</strong> (Cunha&ndash;Heckman)
+           running in reverse: each period&rsquo;s missed knowledge lowers the productivity of the next period&rsquo;s investment.
+           A present-biased, sophisticated child (quasi-hyperbolic &beta;,&#8201;&delta;) already under-invests; process-replacing
+           use <strong style="color:var(--white)">compounds</strong> that gap rather than closing it.</p>
+        <div class="stat-callout">
+          <span class="big highlight-red">widening</span>
+          <span class="unit">the capacity wedge grows<br>with every period of<br>process-replacing use</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" data-chart="agecost" id="step-4">
+      <div class="step-inner">
+        <div class="step-num">Why Age Is Everything</div>
+        <h2>A unit of substitution costs far more at six than at sixteen</h2>
+        <p>The marginal welfare cost of process-replacing use,
+           <span class="var">M(t)</span> = &delta;<sup>t</sup>&#8201;[&#8201;&pi;<sub>t</sub>&#8201;&gamma;<sub>a</sub>&#8201;&Psi;<sub>D</sub> +
+           &lambda;<sub>h</sub>&#8201;&Psi;<sub>h</sub>(t)&#8201;], is <strong style="color:var(--white)">strictly decreasing in
+           age</strong>. Three forces drive it down: discounting &delta;<sup>t</sup>, the exponential decline of plasticity
+           &pi;<sub>t</sub> as habits set, and the cascade-distance term &Psi;<sub>h</sub>(t), which shrinks as the remaining
+           curricular runway (T&minus;t) shortens.</p>
+        <div class="stat-callout">
+          <span class="big highlight-amber">M(t)&#8201;&darr;</span>
+          <span class="unit">cascade cost dominates in<br>early childhood, then falls<br>rapidly with age</span>
+        </div>
+        <p>The implication is sharp: policy attention is most consequential early. A unit of substitution at age six carries a
+           welfare cost orders of magnitude larger than the same unit at sixteen.</p>
+      </div>
+    </section>
+
+    <section class="step" data-chart="threshold" id="step-5">
+      <div class="step-inner">
+        <div class="step-num">Governance, Not Access</div>
+        <h2>The same AI can help one child and harm another</h2>
+        <p>Whether AI access raises or lowers welfare &mdash; the sign of &part;V<sub>0</sub>/&part;&theta; &mdash; flips at a sharp
+           threshold <span class="var">g</span><sup>*</sup>(&theta;). The cross-partial &part;<sup>2</sup>V<sub>0</sub>/&part;&theta;&part;g &gt; 0:
+           more governance makes a given capability more beneficial. And the threshold itself
+           <strong style="color:var(--white)">rises with AI capability</strong> (dg<sup>*</sup>/d&theta; &gt; 0) &mdash; more powerful
+           models demand more governance to stay net-positive.</p>
+        <div class="stat-callout">
+          <span class="big highlight-blue">g*(&theta;)&#8201;&uarr;</span>
+          <span class="unit">and the variance of outcomes<br>across households rises<br>with AI capability</span>
+        </div>
+        <p>Worse for equity, the cross-sectional variance of welfare equals 2&#8201;&middot;&#8201;Cov(V<sub>0</sub>,&#8201;&part;V<sub>0</sub>/&part;&theta;)&#8201;&gt;&#8201;0
+           and grows in &theta;. The equity question is therefore not who can <em>afford</em> the technology, but who can
+           <strong style="color:var(--white)">govern</strong> its use.</p>
+      </div>
+    </section>
+
+  </div><!-- /narrative -->
+
+  <div class="sticky-viz">
+    <div class="viz-inner" style="position:relative;height:85vh">
+
+      <div class="chart-panel" id="panel-boundary">
+        <div class="chart-wrap">
+          <div class="chart-title">The process-preservation boundary &nbsp;a = &phi;(e&#8201;;&#8201;g)</div>
+          <svg id="svg-boundary" viewBox="0 0 540 350" width="100%" style="overflow:visible"></svg>
+          <div class="chart-sub">Both boundaries pass through the origin (&phi;(0&#8201;;&#8201;g)=0). Below: AI supports engagement. Above: AI substitutes. Higher governance lifts the line.</div>
+        </div>
+      </div>
+
+      <div class="chart-panel" id="panel-decomp">
+        <div class="chart-wrap">
+          <div class="chart-title">Capacity-Wedge Decomposition &nbsp;(Theorem 1)</div>
+          <svg id="svg-decomp" viewBox="0 0 540 330" width="100%" style="overflow:visible"></svg>
+          <div class="chart-sub">W<sub>active</sub> &minus; W<sub>R</sub> = contemporaneous discipline cost + cascade cost. Schematic; the cascade dominates in typical regions.</div>
+        </div>
+      </div>
+
+      <div class="chart-panel" id="panel-trajectory">
+        <div class="chart-wrap">
+          <div class="chart-title">Capacity trajectories over the schooling life cycle &nbsp;(Figure 2)</div>
+          <svg id="svg-trajectory" viewBox="0 0 540 330" width="100%" style="overflow:visible"></svg>
+          <div class="chart-sub">Same starting capacity; the gap widens as the cascade compounds each period's deficit. Schematic.</div>
+        </div>
+      </div>
+
+      <div class="chart-panel" id="panel-agecost">
+        <div class="chart-wrap">
+          <div class="chart-title">Age structure of the marginal welfare cost M(t) &nbsp;(Figure 3)</div>
+          <svg id="svg-agecost" viewBox="0 0 540 330" width="100%" style="overflow:visible"></svg>
+          <div class="chart-sub">Total cost (blue) = cascade (red) + contemporaneous (amber). Cascade dominates early, falls rapidly. Schematic.</div>
+        </div>
+      </div>
+
+      <div class="chart-panel" id="panel-threshold">
+        <div class="chart-wrap">
+          <div class="chart-title">The governance threshold g*(&theta;) &nbsp;(Figure 4)</div>
+          <svg id="svg-threshold" viewBox="0 0 540 330" width="100%" style="overflow:visible"></svg>
+          <div class="chart-sub">Right of the curve (higher governance): AI raises welfare. Left: AI lowers it. The threshold rises with AI capability.</div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /sticky-viz -->
+</div><!-- /scrolly -->
+
+<!-- CONCLUSION -->
+<section class="conclusion">
+  <h2>The operative variable is<br><span style="color:var(--blue)">governance, not access</span></h2>
+  <p>The public debate asks whether children cheat and whether schools can detect it. This framework reframes the question:
+     generative AI does not merely change the price or availability of an educational input &mdash; it changes the
+     <strong>production function for human capital itself</strong>. The same technology preserves the cognitive process for one
+     child and replaces it for another, and which mode obtains is set by governance, not by who owns a subscription.</p>
+  <p>That matters because the capacities at stake &mdash; discipline, judgment, the habit of independent reasoning &mdash; are
+     <strong>durable life-course inputs</strong>, the very non-cognitive skills the Heckman tradition links to earnings, health,
+     and civic participation. A wedge opened in childhood is a wedge in life trajectories, not in transcripts. And because the
+     cost of substitution is largest early and the welfare effect of access flips sign at a governance threshold that climbs
+     with capability, <strong>universal access deployed on its own can convert unequal governance into unequal lives</strong> &mdash;
+     widening the very gaps it is often meant to close.</p>
+  <p>The levers the model identifies are concrete and decidedly not access-based: effort-contingent designs such as the
+     first-attempt rule; verification requirements that keep the child&rsquo;s judgment in the loop; and governance support
+     targeted where the marginal cost is highest &mdash; the early years. The cohort that met large language models in
+     kindergarten reaches the labor market around <strong>2040</strong>; the institutions that decide between the two modes are
+     being set now.</p>
+  <p class="closer">The question is not whether to give children the machine &mdash; it is whether we build the scaffolding that
+     decides what the machine does to them.</p>
+  <div class="domain-pills">
+    <span class="pill key">Active vs. passive: a skill-formation primitive</span>
+    <span class="pill">W<sub>active</sub> &minus; W<sub>R</sub> = C<sub>contemp</sub> + C<sub>cascade</sub></span>
+    <span class="pill warn">Cascade dominates early</span>
+    <span class="pill">M(t) strictly decreasing in age</span>
+    <span class="pill key">Sharp threshold g*(&theta;), rising in &theta;</span>
+    <span class="pill warn">Variance of outcomes rises in capability</span>
+  </div>
+  <div class="citation">
+    <strong>Source:</strong> <span class="auth"><a class="name-link" href="https://sweifi.github.io/" target="_blank" rel="noopener">Siqi Wei</a></span> <span class="affil">(California State University Northridge)</span> &amp;
+    <span class="auth">Naying Zhou</span> <span class="affil">(Keck School of Medicine at University of Southern California)</span>.
+    <a class="paper-link" href="https://sweifi.github.io/files/CognitiveDelegation(WeiZhou).pdf" target="_blank" rel="noopener">&ldquo;Cognitive Delegation in Childhood: A Theory of Skill Formation under Generative AI.&rdquo;</a>
+    Working paper, May 2026. JEL: I20, I24, I28, J24, D83, D91, O33.<br>
+    Contact: <a href="mailto:siqi.wei@csun.edu">siqi.wei@csun.edu</a> &middot; corresponding author: Siqi Wei.<br>
+    All figures are schematic recreations of the paper's own Figures 1&ndash;4 and the Capacity-Wedge Decomposition (Theorem 1).
+  </div>
+</section>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────
+const DATA = {"fig1": {"e": [0.0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625, 0.65, 0.675, 0.7, 0.725, 0.75, 0.775, 0.8, 0.825, 0.85, 0.875, 0.9, 0.925, 0.95, 0.975, 1.0], "phi_low": [0.0, 0.0011, 0.0037, 0.0073, 0.012, 0.0175, 0.0239, 0.031, 0.0389, 0.0475, 0.0568, 0.0668, 0.0775, 0.0888, 0.1007, 0.1132, 0.1264, 0.1401, 0.1544, 0.1693, 0.1847, 0.2006, 0.2172, 0.2342, 0.2518, 0.2699, 0.2885, 0.3076, 0.3272, 0.3473, 0.3679, 0.389, 0.4106, 0.4326, 0.4552, 0.4782, 0.5016, 0.5255, 0.5499, 0.5747, 0.6], "phi_high": [0.0, 0.0017, 0.0056, 0.0113, 0.0184, 0.0268, 0.0366, 0.0475, 0.0596, 0.0729, 0.0872, 0.1025, 0.1188, 0.1361, 0.1544, 0.1736, 0.1938, 0.2148, 0.2367, 0.2595, 0.2832, 0.3077, 0.333, 0.3591, 0.3861, 0.4138, 0.4423, 0.4716, 0.5017, 0.5326, 0.5641, 0.5965, 0.6296, 0.6634, 0.6979, 0.7332, 0.7691, 0.8058, 0.8432, 0.8812, 0.92]}, "fig2": {"t": [0.0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625, 0.65, 0.675, 0.7, 0.725, 0.75, 0.775, 0.8, 0.825, 0.85, 0.875, 0.9, 0.925, 0.95, 0.975, 1.0], "sP": [0.16, 0.1923, 0.2242, 0.2556, 0.2866, 0.317, 0.3471, 0.3766, 0.4056, 0.4342, 0.4622, 0.4897, 0.5167, 0.5432, 0.5692, 0.5946, 0.6194, 0.6437, 0.6675, 0.6906, 0.7131, 0.7351, 0.7564, 0.777, 0.797, 0.8163, 0.835, 0.8529, 0.87, 0.8864, 0.902, 0.9168, 0.9307, 0.9436, 0.9556, 0.9665, 0.9763, 0.9848, 0.9919, 0.9972, 1.0], "sR": [0.16, 0.1914, 0.2214, 0.25, 0.2774, 0.3036, 0.3288, 0.3528, 0.3758, 0.3978, 0.4186, 0.4385, 0.4573, 0.4751, 0.492, 0.5078, 0.5225, 0.5363, 0.5491, 0.5608, 0.5715, 0.5813, 0.5899, 0.5974, 0.604, 0.6094, 0.6138, 0.6171, 0.6191, 0.6201, 0.6199, 0.6186, 0.6159, 0.6119, 0.6066, 0.5999, 0.5917, 0.5819, 0.5703, 0.5566, 0.54]}, "fig3": {"t": [0.0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625, 0.65, 0.675, 0.7, 0.725, 0.75, 0.775, 0.8, 0.825, 0.85, 0.875, 0.9, 0.925, 0.95, 0.975, 1.0], "total": [1.44, 1.38, 1.3221, 1.2664, 1.2127, 1.1611, 1.1113, 1.0634, 1.0173, 0.9729, 0.9302, 0.8891, 0.8495, 0.8114, 0.7747, 0.7395, 0.7055, 0.6729, 0.6415, 0.6113, 0.5822, 0.5542, 0.5273, 0.5014, 0.4765, 0.4525, 0.4295, 0.4073, 0.386, 0.3654, 0.3456, 0.3266, 0.3083, 0.2906, 0.2735, 0.257, 0.241, 0.2255, 0.2104, 0.1954, 0.1795], "cascade": [1.02, 0.9688, 0.9196, 0.8723, 0.8269, 0.7834, 0.7416, 0.7015, 0.663, 0.626, 0.5906, 0.5566, 0.524, 0.4928, 0.4628, 0.4341, 0.4066, 0.3802, 0.355, 0.3308, 0.3076, 0.2854, 0.2641, 0.2438, 0.2243, 0.2056, 0.1878, 0.1707, 0.1543, 0.1386, 0.1236, 0.1093, 0.0955, 0.0823, 0.0696, 0.0574, 0.0456, 0.0342, 0.0231, 0.012, 0.0], "contemp": [0.42, 0.4112, 0.4025, 0.3941, 0.3858, 0.3777, 0.3697, 0.3619, 0.3543, 0.3469, 0.3396, 0.3325, 0.3255, 0.3186, 0.3119, 0.3054, 0.2989, 0.2927, 0.2865, 0.2805, 0.2746, 0.2688, 0.2632, 0.2576, 0.2522, 0.2469, 0.2417, 0.2366, 0.2317, 0.2268, 0.222, 0.2173, 0.2128, 0.2083, 0.2039, 0.1996, 0.1954, 0.1913, 0.1873, 0.1834, 0.1795]}, "fig4": {"theta": [0.0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625, 0.65, 0.675, 0.7, 0.725, 0.75, 0.775, 0.8, 0.825, 0.85, 0.875, 0.9, 0.925, 0.95, 0.975, 1.0], "gstar": [0.16, 0.1878, 0.2102, 0.2308, 0.2504, 0.2693, 0.2876, 0.3055, 0.323, 0.3401, 0.357, 0.3736, 0.39, 0.4062, 0.4222, 0.438, 0.4537, 0.4693, 0.4846, 0.4999, 0.5151, 0.5301, 0.545, 0.5599, 0.5746, 0.5892, 0.6038, 0.6182, 0.6326, 0.6469, 0.6612, 0.6753, 0.6894, 0.7035, 0.7174, 0.7313, 0.7452, 0.759, 0.7727, 0.7864, 0.8]}, "decomp": {"contemp": 0.36, "cascade": 0.64}};
+const C = {blue:'#60a5fa',green:'#34d399',amber:'#fbbf24',red:'#f87171',
+           violet:'#a78bfa',teal:'#2dd4bf',pink:'#f472b6',dim:'#3d5166',muted:'#7a8fa8'};
+
+const SVG_NS='http://www.w3.org/2000/svg';
+function svgEl(tag,attrs,parent){
+  const e=document.createElementNS(SVG_NS,tag);
+  Object.entries(attrs||{}).forEach(([k,v])=>e.setAttribute(k,v));
+  if(parent) parent.appendChild(e);
+  return e;
+}
+function txt(content,attrs,parent){
+  const e=svgEl('text',Object.assign({'font-family':'Inter,Arial'},attrs||{}),parent);
+  e.textContent=content; return e;
+}
+function path(pts,attrs,parent){
+  const d=pts.map((p,i)=>(i?'L':'M')+p[0]+' '+p[1]).join(' ');
+  return svgEl('path',Object.assign({d,fill:'none'},attrs||{}),parent);
+}
+
+// ── Chart 1: process-preservation boundary (paper Figure 1) ───
+(function buildBoundary(){
+  const svg=document.getElementById('svg-boundary');
+  const W=540,H=350,ML=48,MR=26,MT=22,MB=42, pw=W-ML-MR, ph=H-MT-MB;
+  const xOf=v=>ML+v*pw, yOf=v=>MT+(1-v)*ph;
+  const f=DATA.fig1;
+  const lowPts=f.e.map((e,i)=>[xOf(e),yOf(f.phi_low[i])]);
+  const highPts=f.e.map((e,i)=>[xOf(e),yOf(f.phi_high[i])]);
+
+  // process-replacing region (above phi_low) -> pale amber (full upper area)
+  svgEl('polygon',{points:[`${ML},${yOf(1)}`,...lowPts.map(p=>p.join(',')),`${xOf(1)},${yOf(1)}`].join(' '),
+    fill:'rgba(251,191,36,.10)'},svg);
+  // process-preserving region (below phi_low) -> pale blue
+  svgEl('polygon',{points:[`${ML},${yOf(0)}`,...lowPts.map(p=>p.join(',')),`${xOf(1)},${yOf(0)}`].join(' '),
+    fill:'rgba(96,165,250,.13)'},svg);
+
+  // axes with arrowheads
+  const ay=yOf(0);
+  svgEl('line',{x1:ML,y1:ay,x2:xOf(1)+8,y2:ay,stroke:'rgba(255,255,255,.45)','stroke-width':1.2},svg);
+  svgEl('path',{d:`M${xOf(1)+2},${ay-4} L${xOf(1)+9},${ay} L${xOf(1)+2},${ay+4}`,fill:'rgba(255,255,255,.6)'},svg);
+  svgEl('line',{x1:ML,y1:ay,x2:ML,y2:MT-8,stroke:'rgba(255,255,255,.45)','stroke-width':1.2},svg);
+  svgEl('path',{d:`M${ML-4},${MT-2} L${ML},${MT-9} L${ML+4},${MT-2}`,fill:'rgba(255,255,255,.6)'},svg);
+
+  // boundary curves
+  path(lowPts,{stroke:C.blue,'stroke-width':2.6},svg);
+  path(highPts,{stroke:C.red,'stroke-width':2.2,'stroke-dasharray':'6,4'},svg);
+
+  // "as g rises" shift arrow between curves (upper-right where the gap is wide)
+  const ai=33, ax=xOf(f.e[ai]);
+  svgEl('line',{x1:ax,y1:yOf(f.phi_low[ai])-2,x2:ax,y2:yOf(f.phi_high[ai])+7,stroke:'rgba(255,255,255,.5)','stroke-width':1.3},svg);
+  svgEl('path',{d:`M${ax-4},${yOf(f.phi_high[ai])+11} L${ax},${yOf(f.phi_high[ai])+4} L${ax+4},${yOf(f.phi_high[ai])+11}`,fill:'none',stroke:'rgba(255,255,255,.65)','stroke-width':1.3},svg);
+  txt('as g rises',{x:ax+8,y:(yOf(f.phi_low[ai])+yOf(f.phi_high[ai]))/2,fill:'rgba(255,255,255,.65)','font-size':10},svg);
+
+  // region labels (paper wording)
+  txt('process-replacing region',{x:xOf(.05),y:yOf(.84),fill:'#fcd34d','font-size':12,'font-weight':600},svg);
+  txt('(at g low)',{x:xOf(.05),y:yOf(.84)+14,fill:'rgba(252,211,77,.65)','font-size':9.5},svg);
+  txt('process-preserving',{x:xOf(.97),y:yOf(.12),'text-anchor':'end',fill:'#7fb4f5','font-size':12,'font-weight':600},svg);
+  txt('region',{x:xOf(.97),y:yOf(.12)+14,'text-anchor':'end',fill:'#7fb4f5','font-size':12,'font-weight':600},svg);
+
+  // curve labels
+  txt('a = φ(e; g high)',{x:xOf(.30),y:yOf(.66),fill:C.red,'font-size':10.5,'font-weight':600},svg);
+  txt('a = φ(e; g low)',{x:xOf(.70),y:yOf(.345),fill:C.blue,'font-size':10.5,'font-weight':600},svg);
+
+  // axis titles
+  txt('active effort  e →',{x:ML+pw/2,y:H-8,'text-anchor':'middle',fill:C.dim,'font-size':11},svg);
+  txt('delegation  a',{x:15,y:MT+ph/2,'text-anchor':'middle',fill:C.dim,'font-size':11,
+    transform:`rotate(-90 15 ${MT+ph/2})`},svg);
+})();
+
+// ── Chart 2: Capacity-Wedge Decomposition waterfall (Theorem 1)
+(function buildDecomp(){
+  const svg=document.getElementById('svg-decomp');
+  const W=540,H=330,MT=72,MB=52, baseY=H-MB;
+  const full=baseY-MT;
+  const d=DATA.decomp;
+  const WEDGE=0.48;
+  const contH=d.contemp*WEDGE, cascH=d.cascade*WEDGE, wr=1-WEDGE;
+  const bw=86, gap=(W-bw*4-40)/3, x0=20;
+  const yOf=frac=>baseY-frac*full;
+
+  (function(){
+    const tx='#cdd7e6';
+    const t=svgEl('text',{x:W/2,y:34,'text-anchor':'middle','font-size':15,'font-weight':800,'font-family':'Inter,Arial'},svg);
+    function sp(s,o){const e=document.createElementNS(SVG_NS,'tspan');Object.entries(o||{}).forEach(([k,v])=>e.setAttribute(k,v));e.textContent=s;t.appendChild(e);}
+    sp('W',{fill:C.blue}); sp('active',{fill:C.blue,'font-size':9,dy:4});
+    sp('  −  ',{fill:tx,dy:-4}); sp('W',{fill:C.muted}); sp('R',{fill:C.muted,'font-size':9,dy:4});
+    sp('   =   ',{fill:tx,dy:-4}); sp('C',{fill:C.amber}); sp('contemp',{fill:C.amber,'font-size':9,dy:4});
+    sp('  +  ',{fill:tx,dy:-4}); sp('C',{fill:C.red}); sp('cascade',{fill:C.red,'font-size':9,dy:4});
+  })();
+  txt('decomposing the long-run capacity wedge',{x:W/2,y:54,'text-anchor':'middle',fill:C.dim,'font-size':10},svg);
+
+  function bar(i,yTop,yBot,fill,stroke){
+    const x=x0+i*(bw+gap);
+    svgEl('rect',{x,y:yTop,width:bw,height:Math.max(yBot-yTop,1),rx:7,fill,
+      stroke:stroke||'none','stroke-width':stroke?1.3:0,'stroke-opacity':.6},svg);
+  }
+  bar(0,yOf(1),baseY,'rgba(96,165,250,.30)',C.blue);
+  bar(1,yOf(1),yOf(1-contH),'rgba(251,191,36,.55)',C.amber);
+  bar(2,yOf(1-contH),yOf(wr),'rgba(241,113,113,.60)',C.red);
+  bar(3,yOf(wr),baseY,'rgba(122,143,168,.30)','rgba(122,143,168,.6)');
+
+  const xc=i=>x0+i*(bw+gap)+bw, xn=i=>x0+i*(bw+gap);
+  function conn(x1,y,x2){svgEl('line',{x1,y1:y,x2,y2:y,stroke:'rgba(255,255,255,.25)','stroke-width':1,'stroke-dasharray':'4,3'},svg);}
+  conn(xc(0),yOf(1),xn(1)); conn(xc(1),yOf(1-contH),xn(2)); conn(xc(2),yOf(wr),xn(3));
+
+  ['W active','C contemp','C cascade','W realized'].forEach((s,i)=>{
+    const col=[C.blue,C.amber,C.red,C.muted][i];
+    txt(s,{x:x0+i*(bw+gap)+bw/2,y:baseY+20,'text-anchor':'middle',fill:col,'font-size':11,'font-weight':700},svg);
+  });
+  txt('discipline',{x:x0+(bw+gap)+bw/2,y:(yOf(1)+yOf(1-contH))/2,'text-anchor':'middle','dominant-baseline':'central',fill:'#1b2536','font-size':10,'font-weight':700},svg);
+  txt('cascade',{x:x0+2*(bw+gap)+bw/2,y:(yOf(1-contH)+yOf(wr))/2,'text-anchor':'middle','dominant-baseline':'central',fill:'#1b2536','font-size':10.5,'font-weight':700},svg);
+  txt('(usually larger)',{x:x0+2*(bw+gap)+bw/2,y:baseY+34,'text-anchor':'middle',fill:C.dim,'font-size':9},svg);
+})();
+
+// ── Chart 3: capacity trajectories (Figure 2) ─────────────────
+(function buildTraj(){
+  const svg=document.getElementById('svg-trajectory');
+  const W=540,H=330,ML=46,MR=30,MT=22,MB=42, pw=W-ML-MR, ph=H-MT-MB;
+  const f=DATA.fig2;
+  const xOf=v=>ML+v*pw, yOf=v=>MT+(1-v)*ph;
+  const P=f.t.map((t,i)=>[xOf(t),yOf(f.sP[i])]);
+  const R=f.t.map((t,i)=>[xOf(t),yOf(f.sR[i])]);
+
+  svgEl('line',{x1:ML,y1:yOf(0),x2:xOf(1),y2:yOf(0),stroke:'rgba(255,255,255,.25)','stroke-width':1},svg);
+  svgEl('line',{x1:ML,y1:yOf(0),x2:ML,y2:MT,stroke:'rgba(255,255,255,.25)','stroke-width':1},svg);
+
+  svgEl('polygon',{points:[...P.map(p=>p.join(',')),...R.slice().reverse().map(p=>p.join(','))].join(' '),
+    fill:'rgba(241,113,113,.12)'},svg);
+
+  path(P,{stroke:C.blue,'stroke-width':2.6},svg);
+  path(R,{stroke:C.red,'stroke-width':2.2,'stroke-dasharray':'6,4'},svg);
+
+  const lx=ML+22, ly=MT+16;
+  svgEl('line',{x1:lx,y1:ly,x2:lx+24,y2:ly,stroke:C.blue,'stroke-width':2.6},svg);
+  txt('process-preserving',{x:lx+30,y:ly+3.5,fill:C.blue,'font-size':10.5,'font-weight':600},svg);
+  svgEl('line',{x1:lx,y1:ly+18,x2:lx+24,y2:ly+18,stroke:C.red,'stroke-width':2.2,'stroke-dasharray':'6,4'},svg);
+  txt('process-replacing',{x:lx+30,y:ly+21.5,fill:C.red,'font-size':10.5,'font-weight':600},svg);
+
+  const mi=33;
+  svgEl('line',{x1:xOf(f.t[mi]),y1:yOf(f.sP[mi]),x2:xOf(f.t[mi]),y2:yOf(f.sR[mi]),stroke:'rgba(255,255,255,.5)','stroke-width':1.2},svg);
+  txt('capacity',{x:xOf(f.t[mi])-6,y:(yOf(f.sP[mi])+yOf(f.sR[mi]))/2-5,'text-anchor':'end',fill:'rgba(255,255,255,.6)','font-size':10},svg);
+  txt('wedge',{x:xOf(f.t[mi])-6,y:(yOf(f.sP[mi])+yOf(f.sR[mi]))/2+8,'text-anchor':'end',fill:'rgba(255,255,255,.6)','font-size':10},svg);
+
+  txt('age  t →',{x:ML+pw/2,y:H-10,'text-anchor':'middle',fill:C.dim,'font-size':11},svg);
+  txt('capacity  s',{x:14,y:MT+ph/2,'text-anchor':'middle',fill:C.dim,'font-size':11,
+    transform:`rotate(-90 14 ${MT+ph/2})`},svg);
+})();
+
+// ── Chart 4: age structure of marginal cost (Figure 3) ────────
+(function buildAgeCost(){
+  const svg=document.getElementById('svg-agecost');
+  const W=540,H=330,ML=46,MR=84,MT=22,MB=54, pw=W-ML-MR, ph=H-MT-MB;
+  const f=DATA.fig3;
+  const ymax=Math.max(...f.total)*1.05;
+  const xOf=v=>ML+v*pw, yOf=v=>MT+(1-v/ymax)*ph;
+  const tot=f.t.map((t,i)=>[xOf(t),yOf(f.total[i])]);
+  const cas=f.t.map((t,i)=>[xOf(t),yOf(f.cascade[i])]);
+  const con=f.t.map((t,i)=>[xOf(t),yOf(f.contemp[i])]);
+
+  ['early childhood','middle schooling','late schooling'].forEach((lab,i)=>{
+    const x0=xOf(i/3), x1=xOf((i+1)/3);
+    if(i%2) svgEl('rect',{x:x0,y:MT,width:x1-x0,height:ph,fill:'rgba(255,255,255,.025)'},svg);
+    txt(lab,{x:(x0+x1)/2,y:H-26,'text-anchor':'middle',fill:C.dim,'font-size':9},svg);
+  });
+  svgEl('line',{x1:ML,y1:yOf(0),x2:xOf(1),y2:yOf(0),stroke:'rgba(255,255,255,.25)','stroke-width':1},svg);
+  svgEl('line',{x1:ML,y1:yOf(0),x2:ML,y2:MT,stroke:'rgba(255,255,255,.25)','stroke-width':1},svg);
+
+  path(con,{stroke:C.amber,'stroke-width':1.8,'stroke-dasharray':'2,3'},svg);
+  path(cas,{stroke:C.red,'stroke-width':2,'stroke-dasharray':'7,4'},svg);
+  path(tot,{stroke:C.blue,'stroke-width':2.8},svg);
+
+  const lx=xOf(.60), ly=MT+12;
+  [['total M(t)',C.blue,null],['cascade',C.red,'7,4'],['contemporaneous',C.amber,'2,3']].forEach((rr,i)=>{
+    const y=ly+i*17;
+    svgEl('line',{x1:lx,y1:y,x2:lx+22,y2:y,stroke:rr[1],'stroke-width':rr[0]==='total M(t)'?2.6:2,...(rr[2]?{'stroke-dasharray':rr[2]}:{})},svg);
+    txt(rr[0],{x:lx+28,y:y+3.5,fill:rr[1],'font-size':10,'font-weight':600},svg);
+  });
+
+  txt('cascade dominates here',{x:xOf(.16),y:yOf(f.total[6])-8,fill:'rgba(252,165,165,.8)','font-size':9.5,'font-weight':600},svg);
+
+  txt('age  t →',{x:ML+pw/2,y:H-8,'text-anchor':'middle',fill:C.dim,'font-size':11},svg);
+  txt('marginal cost  M(t)',{x:14,y:MT+ph/2,'text-anchor':'middle',fill:C.dim,'font-size':11,
+    transform:`rotate(-90 14 ${MT+ph/2})`},svg);
+})();
+
+// ── Chart 5: governance threshold g*(θ) (Figure 4) ────────────
+(function buildThreshold(){
+  const svg=document.getElementById('svg-threshold');
+  const W=540,H=330,ML=46,MR=24,MT=24,MB=44, pw=W-ML-MR, ph=H-MT-MB;
+  const f=DATA.fig4;
+  const xOf=v=>ML+v*pw, yOf=v=>MT+(1-v)*ph;
+  const curve=f.theta.map((th,i)=>[xOf(f.gstar[i]),yOf(th)]);
+
+  svgEl('polygon',{points:[...curve.map(p=>p.join(',')),`${xOf(1)},${yOf(1)}`,`${xOf(1)},${yOf(0)}`].join(' '),
+    fill:'rgba(96,165,250,.13)'},svg);
+  svgEl('polygon',{points:[...curve.map(p=>p.join(',')),`${xOf(0)},${yOf(1)}`,`${xOf(0)},${yOf(0)}`].join(' '),
+    fill:'rgba(251,191,36,.10)'},svg);
+
+  svgEl('line',{x1:ML,y1:yOf(0),x2:xOf(1),y2:yOf(0),stroke:'rgba(255,255,255,.25)','stroke-width':1},svg);
+  svgEl('line',{x1:ML,y1:yOf(0),x2:ML,y2:MT,stroke:'rgba(255,255,255,.25)','stroke-width':1},svg);
+
+  path(curve,{stroke:C.blue,'stroke-width':2.6},svg);
+  txt('g*(θ)',{x:curve[40][0]+4,y:curve[40][1]+2,fill:C.blue,'font-size':11,'font-weight':700},svg);
+
+  txt('AI raises welfare',{x:xOf(.74),y:yOf(.30),'text-anchor':'middle',fill:'#7fb4f5','font-size':12,'font-weight':600},svg);
+  txt('(g > g*)',{x:xOf(.74),y:yOf(.30)+14,'text-anchor':'middle',fill:'rgba(127,180,245,.6)','font-size':9.5},svg);
+  txt('AI lowers welfare',{x:xOf(.26),y:yOf(.74),'text-anchor':'middle',fill:'#fcd34d','font-size':12,'font-weight':600},svg);
+  txt('(g < g*)',{x:xOf(.26),y:yOf(.74)+14,'text-anchor':'middle',fill:'rgba(252,211,77,.6)','font-size':9.5},svg);
+
+  const a0=12,a1=30;
+  svgEl('path',{d:`M${curve[a0][0]+10},${curve[a0][1]} L${curve[a1][0]+10},${curve[a1][1]}`,
+    fill:'none',stroke:'rgba(255,255,255,.4)','stroke-width':1.2,'stroke-dasharray':'3,3'},svg);
+  txt('dg*/dθ > 0',{x:curve[a1][0]+16,y:curve[a1][1]-2,fill:'rgba(255,255,255,.55)','font-size':9.5},svg);
+
+  txt('household governance  g →',{x:ML+pw/2,y:H-10,'text-anchor':'middle',fill:C.dim,'font-size':11},svg);
+  txt('AI capability  θ',{x:14,y:MT+ph/2,'text-anchor':'middle',fill:C.dim,'font-size':11,
+    transform:`rotate(-90 14 ${MT+ph/2})`},svg);
+})();
+
+// ── Scrollytelling: IntersectionObserver (center-line trigger; robust on mobile) ──
+const CHART_MAP={'step-1':'boundary','step-2':'decomp','step-3':'trajectory','step-4':'agecost','step-5':'threshold'};
+function showChart(name){
+  document.querySelectorAll('.chart-panel').forEach(p=>p.classList.remove('visible'));
+  const panel=document.getElementById('panel-'+name);
+  if(panel) panel.classList.add('visible');
+}
+showChart('boundary');
+const steps=document.querySelectorAll('.step');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      steps.forEach(s=>s.classList.remove('active'));
+      e.target.classList.add('active');
+      const chart=CHART_MAP[e.target.id];
+      if(chart) showChart(chart);
+    }
+  });
+},{threshold:0, rootMargin:'-45% 0px -45% 0px'});
+steps.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
