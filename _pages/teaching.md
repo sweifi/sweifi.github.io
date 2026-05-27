@@ -4,21 +4,13 @@ title: "Teaching"
 author_profile: true
 ---
 
-## Courses
+## Courses 
 
-### Investments
+- Investments
  
+- Personal Finance  
  
-
----
-
-### Quantitative Finance (using Python)
- 
- 
-
----
-
-### Financial Modeling
+  
  
 
  
