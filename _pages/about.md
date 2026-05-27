@@ -7,9 +7,9 @@ redirect_from:
   - /about.html
 ---
 
-Welcome! I am the **Stelmar Family Faculty Fellow** and **Associate Professor of Finance** at [David Nazarian College of Business and Economics](https://www.csun.edu/nazarian) at California State University Northridge. 
+Welcome to my page. I am the **Stelmar Family Faculty Fellow** and **Associate Professor of Finance** at [David Nazarian College of Business and Economics](https://www.csun.edu/nazarian) at California State University Northridge. 
 
-My [**current research**](/research/#working-papers) focuses on the economic consequences of modern technologies. These projects examine how technology adoption can generate [**unintended corporate outcomes**](/research/#wp1), how generative AI may alter childhood skill formation through [**cognitive delegation**](https://sweifi.github.io/files/cognitive-delegation-scrollytelling.html), and how emerging technologies reshape the  employment effects of tax incentives. Together, they connect technological disruption to corporate accountability, labor-market restructuring, and long-run developmental capacity formation.
+My [**current research**](/research/#working-papers) focuses on the economic consequences of modern technologies. These projects examine how technology adoption can generate [**unintended corporate outcomes**](/research/#wp1), how generative AI may alter childhood skill formation through [**cognitive delegation**](https://sweifi.github.io/files/cognitive-delegation-scrollytelling.html), and how emerging technologies reshape the [**employment effects of tax incentives**](/research/#wp3). Together, they connect technological disruption to corporate accountability, labor-market restructuring, and long-run developmental capacity formation.
 
 Another strand of my current research connects [**information infrastructure to public finance**](/files/pdv_delta_map.html) by studying how public data visibility affects the allocation of competitive public resources.
 
@@ -22,9 +22,50 @@ I received my Ph.D. in Finance from Oklahoma State University. Before joining CS
 
 ## Research Spotlight
 
-<iframe src="/files/pdv_animated_map.html" width="100%" height="1110px" frameborder="0" scrolling="no" style="border:none; margin-top:0.5em; display:block;"></iframe>
+<div style="margin-top:0.75em;">
 
-- ***"The Legibility Premium: Public Data Visibility and the Allocation of Competitive Federal Grants"*** Siqi Wei and Xiaoyang Zhu
+  <!-- Tab buttons -->
+  <div style="display:flex; gap:0; border-bottom:2px solid #d1d5db;">
+    <button onclick="showTab('map')" id="tab-map"
+      style="padding:10px 22px; font-size:0.92em; font-weight:700; cursor:pointer;
+             background:#1d4ed8; color:#fff; border:none; border-radius:6px 6px 0 0;
+             margin-right:4px; letter-spacing:0.01em; transition:background 0.2s;">
+      🗺 County Map
+    </button>
+    <button onclick="showTab('bars')" id="tab-bars"
+      style="padding:10px 22px; font-size:0.92em; font-weight:700; cursor:pointer;
+             background:#e5e7eb; color:#6b7280; border:none; border-radius:6px 6px 0 0;
+             letter-spacing:0.01em; transition:background 0.2s;">
+      📊 State Rankings
+    </button>
+  </div>
+
+  <!-- Map panel (default) -->
+  <div id="panel-map" style="display:block;">
+    <iframe src="/files/pdv_animated_map.html" width="100%" height="1110px" frameborder="0" scrolling="no" style="border:1px solid #d1d5db; border-top:none; display:block;"></iframe>
+  </div>
+
+  <!-- Racing bars panel -->
+  <div id="panel-bars" style="display:none;">
+    <iframe src="/files/pdv_racing_bars.html" width="100%" height="1110px" frameborder="0" scrolling="no" style="border:1px solid #d1d5db; border-top:none; display:block;"></iframe>
+  </div>
+
+</div>
+
+<script>
+function showTab(name) {
+  document.getElementById('panel-map').style.display  = name === 'map'  ? 'block' : 'none';
+  document.getElementById('panel-bars').style.display = name === 'bars' ? 'block' : 'none';
+  document.getElementById('tab-map').style.background  = name === 'map'  ? '#1d4ed8' : '#e5e7eb';
+  document.getElementById('tab-map').style.color       = name === 'map'  ? '#fff'    : '#6b7280';
+  document.getElementById('tab-bars').style.background = name === 'bars' ? '#1d4ed8' : '#e5e7eb';
+  document.getElementById('tab-bars').style.color      = name === 'bars' ? '#fff'    : '#6b7280';
+}
+</script>
+
+<p style="margin-top:0.75em; font-size:0.88em;">
+  <em>"The Legibility Premium: Public Data Visibility and the Allocation of Competitive Federal Grants"</em> — Siqi Wei and Xiaoyang Zhu
+</p>
 
 
 ## Contact
