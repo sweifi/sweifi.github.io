@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Siqi Wei - Associate Professor of Finance - California State University Northridge"
+title: "Siqi Wei - Associate Professor of Finance"
 author_profile: true
 redirect_from:
   - /about/
