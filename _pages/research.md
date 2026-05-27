@@ -6,7 +6,7 @@ author_profile: true
 
 ## Research Interests
 
-Investments &nbsp;·&nbsp; Capital Markets &nbsp;·&nbsp; Human Capital &nbsp;·&nbsp; Public Finance
+Capital Markets &nbsp;·&nbsp; Human Capital &nbsp;·&nbsp; Public Finance &nbsp;·&nbsp; Corporate Finance
 
 ---
 
