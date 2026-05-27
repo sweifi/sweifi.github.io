@@ -9,7 +9,7 @@ redirect_from:
 
 Welcome! I am the **Stelmar Family Faculty Fellow** and **Associate Professor of Finance** at [David Nazarian College of Business and Economics](https://www.csun.edu/nazarian) at California State University Northridge. 
 
-My [**current research**](/research/#working-papers) focuses on the economic consequences of modern technologies. These projects examine how technology adoption can generate [**unintended corporate outcomes**](/research/#wp1), how generative AI may alter childhood skill formation through [**cognitive delegation**](https://sweifi.github.io/files/cognitive-delegation-scrollytelling.html), and how emerging technologies reshape the [**employment effects of tax incentives**](/research/#wp3). Together, they connect technological disruption to corporate accountability, labor-market restructuring, and long-run developmental capacity formation.
+My [**current research**](/research/#working-papers) focuses on the economic consequences of modern technologies. These projects examine how technology adoption can generate [**unintended corporate outcomes**](/research/#wp1), how generative AI may alter childhood skill formation through [**cognitive delegation**](https://sweifi.github.io/files/cognitive-delegation-scrollytelling.html), and how emerging technologies reshape the  employment effects of tax incentives. Together, they connect technological disruption to corporate accountability, labor-market restructuring, and long-run developmental capacity formation.
 
 Another strand of my current research connects [**information infrastructure to public finance**](/files/pdv_delta_map.html) by studying how public data visibility affects the allocation of competitive public resources.
 
