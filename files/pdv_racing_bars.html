@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDV Racing Bar Chart — U.S. States 2012–2022</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d1520;
+    font-family: 'Inter', -apple-system, Arial, sans-serif;
+    color: #dde4ef;
+    min-height: 100vh;
+  }
+  .page { max-width: 980px; margin: 0 auto; padding: 30px 22px 48px; }
+
+  /* header */
+  .header { margin-bottom: 20px; }
+  .header h1 {
+    font-size: 26px; font-weight: 900; letter-spacing: -.03em;
+    color: #fff; margin-bottom: 5px;
+  }
+  .subtitle { font-size: 14.5px; color: #93c5fd; margin-bottom: 8px; }
+  .header p  { font-size: 13px; color: #7a8fa8; line-height: 1.6; max-width: 720px; }
+
+  /* legend */
+  .legend {
+    display: flex; gap: 18px; margin-bottom: 18px; flex-wrap: wrap; align-items: center;
+  }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #7a8fa8; }
+  .leg-dot  { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+  /* year overlay */
+  .year-overlay {
+    font-size: 96px; font-weight: 900; color: rgba(255,255,255,.06);
+    letter-spacing: -.05em; line-height: 1;
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    pointer-events: none; user-select: none;
+    text-shadow: none;
+  }
+
+  /* chart wrapper */
+  .chart-wrap {
+    position: relative;
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 16px;
+    padding: 18px 18px 18px 12px;
+    overflow: hidden;
+  }
+
+  /* bars container */
+  #bars {
+    position: relative;
+    /* height set by JS */
+  }
+
+  /* individual bar row */
+  .bar-row {
+    position: absolute;
+    left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    transition: top 0.75s cubic-bezier(0.4,0,0.2,1),
+                opacity 0.5s ease;
+  }
+  .bar-rank {
+    width: 26px; flex-shrink: 0;
+    font-size: 11px; color: #3d5166; text-align: right;
+    padding-right: 6px; font-weight: 600;
+    transition: opacity 0.5s ease;
+  }
+  .bar-abbr {
+    width: 30px; flex-shrink: 0;
+    font-size: 12px; font-weight: 800; color: #dde4ef;
+    letter-spacing: .01em;
+  }
+  .bar-track {
+    flex: 1;
+    height: 28px;
+    border-radius: 4px;
+    background: rgba(255,255,255,.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    border-radius: 4px;
+    transition: width 0.75s cubic-bezier(0.4,0,0.2,1),
+                background-color 0.4s ease;
+  }
+  .bar-label {
+    position: absolute; right: 8px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px; font-weight: 700; color: rgba(0,0,0,.65);
+    letter-spacing: .01em;
+    white-space: nowrap;
+  }
+  .bar-score {
+    width: 46px; flex-shrink: 0;
+    font-size: 11.5px; font-weight: 700;
+    color: #7a8fa8; text-align: right;
+    padding-left: 8px;
+    transition: color 0.4s ease;
+  }
+
+  /* controls */
+  .controls {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 16px; flex-wrap: wrap;
+  }
+  .year-badge {
+    font-size: 42px; font-weight: 900; color: #fff;
+    letter-spacing: -.04em; line-height: 1; min-width: 88px;
+    text-shadow: 0 0 36px rgba(96,165,250,.5);
+  }
+  .ctrl-btn {
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14);
+    color: #dde4ef; border-radius: 10px; padding: 8px 18px;
+    font-size: 13px; font-weight: 700; cursor: pointer; transition: background .15s;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,.16); }
+  .slider-wrap { flex: 1; min-width: 180px; }
+  input[type=range] { width: 100%; accent-color: #60a5fa; cursor: pointer; height: 4px; }
+  .speed-wrap { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #5a6e87; }
+  .speed-wrap select {
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+    color: #dde4ef; border-radius: 8px; padding: 4px 8px; font-size: 12px; cursor: pointer;
+  }
+
+  .footnote { margin-top: 16px; font-size: 12px; color: #3d5166; line-height: 1.65; }
+  .footnote a { color: #60a5fa; text-decoration: none; }
+  .footnote a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>State PDV Rankings Race</h1>
+    <div class="subtitle">Which states lead — and which fall behind — in public data visibility?</div>
+    <p>Population-weighted average PDV score by state, 2012–2022.
+       Rankings shift as federal data programs expand unevenly across states.
+       Color = Census region.</p>
+  </div>
+
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#60a5fa"></div>Northeast</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#34d399"></div>Midwest</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#fbbf24"></div>South</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#f87171"></div>West</div>
+    <div class="leg-item" style="margin-left:auto; color:#3d5166; font-size:12px;">Population-weighted mean PDV &nbsp;|&nbsp; All 51 states + D.C.</div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="year-overlay" id="yr-bg">2012</div>
+    <div id="bars"></div>
+  </div>
+
+  <div class="controls">
+    <span class="year-badge" id="year-badge">2012</span>
+    <button class="ctrl-btn" id="btn-play">&#9654; Play</button>
+    <div class="slider-wrap">
+      <input type="range" id="year-slider" min="0" max="10" value="0" step="1">
+    </div>
+    <div class="speed-wrap">
+      Speed:
+      <select id="speed-sel">
+        <option value="2200">0.5&times;</option>
+        <option value="1300">1&times;</option>
+        <option value="800" selected>2&times;</option>
+        <option value="450">4&times;</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="footnote">
+    PDV: Public Data Visibility composite score, 8 domains, 0–4 scale. State score = population-weighted mean of county PDV scores.<br>
+    Source: Siqi Wei and Xiaoyang Zhu. &#8220;Public Data Visibility and the Allocation of Competitive Federal Grants.&#8221; Working paper, CSUN, 2026. &middot;
+    <a href="mailto:siqi.wei@csun.edu">siqi.wei@csun.edu</a>
+  </div>
+
+</div>
+
+<script>
+const FRAMES = {"2012":{"abbr":["DC","MD","WA","NV","FL","RI","TX","PA","OH","OR","NH","HI","MI","ME","CA","DE","LA","GA","IN","MN","MA","NY","IL","SC","OK","UT","VA","NJ","MO","TN","KS","CT","AZ","WY","KY","VT","NC","WI","MS","WV","ND","AL","NM","ID","AR","NE","SD","MT","IA","CO","AK"],"name":["D.C.","Maryland","Washington","Nevada","Florida","Rhode Island","Texas","Pennsylvania","Ohio","Oregon","New Hampshire","Hawaii","Michigan","Maine","California","Delaware","Louisiana","Georgia","Indiana","Minnesota","Massachusetts","New York","Illinois","South Carolina","Oklahoma","Utah","Virginia","New Jersey","Missouri","Tennessee","Kansas","Connecticut","Arizona","Wyoming","Kentucky","Vermont","North Carolina","Wisconsin","Mississippi","West Virginia","North Dakota","Alabama","New Mexico","Idaho","Arkansas","Nebraska","South Dakota","Montana","Iowa","Colorado","Alaska"],"pdv":[3.125,3.0833,3.077,3.0762,3.0757,3.0694,3.0648,3.0614,3.0581,3.0556,3.0547,3.0535,3.0506,3.0333,3.0237,3.0231,3.009,3.0066,3.0061,3.0038,2.9946,2.9862,2.9854,2.9844,2.9811,2.9809,2.9791,2.9783,2.9774,2.9713,2.969,2.9688,2.9667,2.947,2.9464,2.9336,2.9258,2.9201,2.9127,2.8978,2.8963,2.8769,2.8689,2.8435,2.84,2.8387,2.813,2.7817,2.7554,2.7109,2.375],"color":["#fbbf24","#fbbf24","#f87171","#f87171","#fbbf24","#60a5fa","#fbbf24","#60a5fa","#34d399","#f87171","#60a5fa","#f87171","#34d399","#60a5fa","#f87171","#fbbf24","#fbbf24","#fbbf24","#34d399","#34d399","#60a5fa","#60a5fa","#34d399","#fbbf24","#fbbf24","#f87171","#fbbf24","#60a5fa","#34d399","#fbbf24","#34d399","#60a5fa","#f87171","#f87171","#fbbf24","#60a5fa","#fbbf24","#34d399","#fbbf24","#fbbf24","#34d399","#fbbf24","#f87171","#f87171","#fbbf24","#34d399","#34d399","#f87171","#34d399","#f87171","#f87171"],"n":[1,24,39,17,67,5,254,67,88,36,10,5,83,16,58,3,64,159,92,87,14,62,102,46,77,29,134,21,115,95,105,8,15,23,120,14,100,72,82,55,53,67,33,44,75,93,66,56,99,64,30]},"2013":{"abbr":["DC","MD","FL","WA","NV","NH","TX","PA","HI","OR","OH","RI","MI","UT","ME","CA","DE","LA","IN","GA","MN","MA","NY","SC","IL","VA","OK","NJ","MO","TN","KS","CT","AZ","WY","KY","VT","NC","WI","MS","ND","WV","AL","NM","ID","SD","NE","AR","MT","IA","CO","AK"],"name":["D.C.","Maryland","Florida","Washington","Nevada","New Hampshire","Texas","Pennsylvania","Hawaii","Oregon","Ohio","Rhode Island","Michigan","Utah","Maine","California","Delaware","Louisiana","Indiana","Georgia","Minnesota","Massachusetts","New York","South Carolina","Illinois","Virginia","Oklahoma","New Jersey","Missouri","Tennessee","Kansas","Connecticut","Arizona","Wyoming","Kentucky","Vermont","North Carolina","Wisconsin","Mississippi","North Dakota","West Virginia","Alabama","New Mexico","Idaho","South Dakota","Nebraska","Arkansas","Montana","Iowa","Colorado","Alaska"],"pdv":[3.0,2.9583,2.9523,2.9517,2.9506,2.9436,2.9419,2.9395,2.9368,2.9331,2.932,2.9272,2.9254,2.9059,2.9035,2.8987,2.8981,2.8852,2.8819,2.8815,2.8768,2.8696,2.8612,2.8609,2.8602,2.8553,2.8544,2.8533,2.8489,2.8452,2.8442,2.8438,2.8417,2.8265,2.8181,2.8086,2.8048,2.7958,2.7929,2.7808,2.7785,2.7519,2.7439,2.731,2.7247,2.7112,2.7,2.6651,2.6245,2.5996,2.2375],"color":["#fbbf24","#fbbf24","#fbbf24","#f87171","#f87171","#60a5fa","#fbbf24","#60a5fa","#f87171","#f87171","#34d399","#60a5fa","#34d399","#f87171","#60a5fa","#f87171","#fbbf24","#fbbf24","#34d399","#fbbf24","#34d399","#60a5fa","#60a5fa","#fbbf24","#34d399","#fbbf24","#fbbf24","#60a5fa","#34d399","#fbbf24","#34d399","#60a5fa","#f87171","#f87171","#fbbf24","#60a5fa","#fbbf24","#34d399","#fbbf24","#34d399","#fbbf24","#fbbf24","#f87171","#f87171","#34d399","#34d399","#fbbf24","#f87171","#34d399","#f87171","#f87171"],"n":[1,24,67,39,17,10,254,67,5,36,88,5,83,29,16,58,3,64,92,159,87,14,62,46,102,133,77,21,115,95,105,8,15,23,120,14,100,72,82,53,55,67,33,44,66,93,75,56,99,64,30]},"2014":{"abbr":["DC","NJ","MD","NV","FL","RI","NH","PA","MA","HI","TX","OR","OH","MI","WA","UT","DE","WI","ME","NY","LA","CA","IN","SC","MN","GA","OK","VA","MO","KS","TN","CT","WY","KY","NC","VT","AZ","IL","MS","ND","WV","AL","NE","NM","ID","AR","SD","MT","IA","CO","AK"],"name":["D.C.","New Jersey","Maryland","Nevada","Florida","Rhode Island","New Hampshire","Pennsylvania","Massachusetts","Hawaii","Texas","Oregon","Ohio","Michigan","Washington","Utah","Delaware","Wisconsin","Maine","New York","Louisiana","California","Indiana","South Carolina","Minnesota","Georgia","Oklahoma","Virginia","Missouri","Kansas","Tennessee","Connecticut","Wyoming","Kentucky","North Carolina","Vermont","Arizona","Illinois","Mississippi","North Dakota","West Virginia","Alabama","Nebraska","New Mexico","Idaho","Arkansas","South Dakota","Montana","Iowa","Colorado","Alaska"],"pdv":[3.25,3.2158,3.2067,3.2024,3.2016,3.1944,3.1936,3.189,3.1872,3.1868,3.1867,3.1839,3.1826,3.1756,3.1651,3.1576,3.1481,3.1447,3.1444,3.139,3.1382,3.1379,3.1282,3.1266,3.1238,3.111,3.1069,3.1033,3.1033,3.1,3.0983,3.0938,3.0816,3.0708,3.0695,3.0575,3.05,3.045,3.0415,3.0246,3.0226,3.0093,3.0061,2.997,2.976,2.955,2.954,2.8999,2.8832,2.8457,2.5],"color":["#fbbf24","#60a5fa","#fbbf24","#f87171","#fbbf24","#60a5fa","#60a5fa","#60a5fa","#60a5fa","#f87171","#fbbf24","#f87171","#34d399","#34d399","#f87171","#f87171","#fbbf24","#34d399","#60a5fa","#60a5fa","#fbbf24","#f87171","#34d399","#fbbf24","#34d399","#fbbf24","#fbbf24","#fbbf24","#34d399","#34d399","#fbbf24","#60a5fa","#f87171","#fbbf24","#fbbf24","#60a5fa","#f87171","#34d399","#fbbf24","#34d399","#fbbf24","#fbbf24","#34d399","#f87171","#f87171","#fbbf24","#34d399","#f87171","#34d399","#f87171","#f87171"],"n":[1,21,24,17,67,5,10,67,14,5,254,36,88,83,39,29,3,72,16,62,64,58,92,46,87,159,77,133,115,105,95,8,23,120,100,14,15,102,82,53,55,67,93,33,44,75,66,56,99,64,30]},"2015":{"abbr":["DC","NV","NJ","MD","HI","FL","NH","OR","MI","OH","PA","TX","RI","CA","MA","UT","WA","ME","WI","MN","LA","IN","KS","NY","WY","GA","DE","SC","OK","VT","MO","VA","CT","TN","NC","KY","ND","MS","SD","AZ","WV","NE","IA","AL","IL","NM","MT","ID","CO","AR","AK"],"name":["D.C.","Nevada","New Jersey","Maryland","Hawaii","Florida","New Hampshire","Oregon","Michigan","Ohio","Pennsylvania","Texas","Rhode Island","California","Massachusetts","Utah","Washington","Maine","Wisconsin","Minnesota","Louisiana","Indiana","Kansas","New York","Wyoming","Georgia","Delaware","South Carolina","Oklahoma","Vermont","Missouri","Virginia","Connecticut","Tennessee","North Carolina","Kentucky","North Dakota","Mississippi","South Dakota","Arizona","West Virginia","Nebraska","Iowa","Alabama","Illinois","New Mexico","Montana","Idaho","Colorado","Arkansas","Alaska"],"pdv":[3.25,3.2345,3.2337,3.2314,3.211,3.2088,3.2075,3.2048,3.2039,3.2025,3.1996,3.1949,3.1944,3.194,3.1896,3.1874,3.1853,3.1809,3.1778,3.1695,3.1681,3.1619,3.1566,3.1527,3.1517,3.1497,3.1481,3.1434,3.1349,3.1303,3.1268,3.1172,3.1094,3.1064,3.1036,3.0993,3.0931,3.0823,3.0755,3.0667,3.0657,3.0654,3.0647,3.0597,3.0589,3.0457,3.0359,3.033,2.9961,2.9933,2.7958],"color":["#fbbf24","#f87171","#60a5fa","#fbbf24","#f87171","#fbbf24","#60a5fa","#f87171","#34d399","#34d399","#60a5fa","#fbbf24","#60a5fa","#f87171","#60a5fa","#f87171","#f87171","#60a5fa","#34d399","#34d399","#fbbf24","#34d399","#34d399","#60a5fa","#f87171","#fbbf24","#fbbf24","#fbbf24","#fbbf24","#60a5fa","#34d399","#fbbf24","#60a5fa","#fbbf24","#fbbf24","#fbbf24","#34d399","#fbbf24","#34d399","#f87171","#fbbf24","#34d399","#34d399","#fbbf24","#34d399","#f87171","#f87171","#f87171","#f87171","#fbbf24","#f87171"],"n":[1,17,21,24,5,67,10,36,83,88,67,254,5,58,14,29,39,16,72,87,64,92,105,62,23,159,3,46,77,14,115,133,8,95,100,120,53,82,66,15,55,93,99,67,102,33,56,44,64,75,30]},"2016":{"abbr":["DC","NV","MA","HI","TX","OR","FL","UT","RI","NJ","MI","WA","OH","CA","WI","PA","MD","NM","IN","NY","DE","KS","GA","ME","NC","MN","IL","NH","LA","OK","ID","SC","MO","WY","MT","VT","TN","AZ","CT","VA","KY","ND","SD","IA","NE","MS","WV","AL","AR","CO","AK"],"name":["D.C.","Nevada","Massachusetts","Hawaii","Texas","Oregon","Florida","Utah","Rhode Island","New Jersey","Michigan","Washington","Ohio","California","Wisconsin","Pennsylvania","Maryland","New Mexico","Indiana","New York","Delaware","Kansas","Georgia","Maine","North Carolina","Minnesota","Illinois","New Hampshire","Louisiana","Oklahoma","Idaho","South Carolina","Missouri","Wyoming","Montana","Vermont","Tennessee","Arizona","Connecticut","Virginia","Kentucky","North Dakota","South Dakota","Iowa","Nebraska","Mississippi","West Virginia","Alabama","Arkansas","Colorado","Alaska"],"pdv":[3.875,3.8455,3.8252,3.7972,3.7963,3.7963,3.7939,3.7893,3.789,3.7816,3.7794,3.7784,3.7676,3.7457,3.745,3.744,3.7439,3.7272,3.7268,3.7214,3.7203,3.7177,3.7157,3.7147,3.7144,3.7139,3.7092,3.7075,3.7055,3.7018,3.6978,3.6885,3.6791,3.6763,3.6727,3.6727,3.6718,3.6583,3.6562,3.6369,3.6306,3.6177,3.6158,3.6147,3.6046,3.6032,3.5845,3.5728,3.4917,3.4805,3.3125],"color":["#fbbf24","#f87171","#60a5fa","#f87171","#fbbf24","#f87171","#fbbf24","#f87171","#60a5fa","#60a5fa","#34d399","#f87171","#34d399","#f87171","#34d399","#60a5fa","#fbbf24","#f87171","#34d399","#60a5fa","#fbbf24","#34d399","#fbbf24","#60a5fa","#fbbf24","#34d399","#34d399","#60a5fa","#fbbf24","#fbbf24","#f87171","#fbbf24","#34d399","#f87171","#f87171","#60a5fa","#fbbf24","#f87171","#60a5fa","#fbbf24","#fbbf24","#34d399","#34d399","#34d399","#34d399","#fbbf24","#fbbf24","#fbbf24","#fbbf24","#f87171","#f87171"],"n":[1,17,14,5,254,36,67,29,5,21,83,39,88,58,72,67,24,33,92,62,3,105,159,16,100,87,102,10,64,77,44,46,115,23,56,14,95,15,8,133,120,53,66,99,93,82,55,67,75,64,30]},"2017":{"abbr":["DC","NV","WA","TX","OR","HI","FL","UT","RI","MI","NJ","OH","CA","MD","WI","NM","PA","MA","KS","LA","IN","NY","DE","ME","MN","NC","GA","IL","NH","OK","ID","SC","MO","WY","TN","VT","MT","AZ","CT","VA","ND","KY","NE","SD","MS","IA","AL","WV","CO","AR","AK"],"name":["D.C.","Nevada","Washington","Texas","Oregon","Hawaii","Florida","Utah","Rhode Island","Michigan","New Jersey","Ohio","California","Maryland","Wisconsin","New Mexico","Pennsylvania","Massachusetts","Kansas","Louisiana","Indiana","New York","Delaware","Maine","Minnesota","North Carolina","Georgia","Illinois","New Hampshire","Oklahoma","Idaho","South Carolina","Missouri","Wyoming","Tennessee","Vermont","Montana","Arizona","Connecticut","Virginia","North Dakota","Kentucky","Nebraska","South Dakota","Mississippi","Iowa","Alabama","West Virginia","Colorado","Arkansas","Alaska"],"pdv":[4.0,3.9697,3.9396,3.9279,3.9223,3.9222,3.9189,3.9154,3.914,3.9048,3.8995,3.8901,3.8707,3.8689,3.8685,3.8667,3.8645,3.8611,3.8604,3.852,3.8511,3.8462,3.8453,3.8397,3.839,3.8389,3.8388,3.837,3.8325,3.827,3.8261,3.8135,3.8041,3.8024,3.8006,3.7977,3.7918,3.7833,3.7812,3.768,3.7613,3.7535,3.7439,3.7423,3.7415,3.7349,3.6978,3.6943,3.6621,3.6233,3.4083],"color":["#fbbf24","#f87171","#f87171","#fbbf24","#f87171","#f87171","#fbbf24","#f87171","#60a5fa","#34d399","#60a5fa","#34d399","#f87171","#fbbf24","#34d399","#f87171","#60a5fa","#60a5fa","#34d399","#fbbf24","#34d399","#60a5fa","#fbbf24","#60a5fa","#34d399","#fbbf24","#fbbf24","#34d399","#60a5fa","#fbbf24","#f87171","#fbbf24","#34d399","#f87171","#fbbf24","#60a5fa","#f87171","#f87171","#60a5fa","#fbbf24","#34d399","#fbbf24","#34d399","#34d399","#fbbf24","#34d399","#fbbf24","#fbbf24","#f87171","#fbbf24","#f87171"],"n":[1,17,39,254,36,5,67,29,5,83,21,88,58,24,72,33,67,14,105,64,92,62,3,16,87,100,159,102,10,77,44,46,115,23,95,14,56,15,8,133,53,120,93,66,82,99,67,55,64,75,30]},"2018":{"abbr":["DC","WA","TX","HI","OR","NJ","MI","FL","RI","UT","OH","PA","WI","NV","MA","MD","NM","CA","LA","KS","IN","DE","ME","ID","GA","NC","IL","NH","OK","MN","NY","SC","WY","MO","MT","TN","CT","VT","AZ","VA","KY","ND","MS","SD","NE","WV","IA","AL","CO","AR","AK"],"name":["D.C.","Washington","Texas","Hawaii","Oregon","New Jersey","Michigan","Florida","Rhode Island","Utah","Ohio","Pennsylvania","Wisconsin","Nevada","Massachusetts","Maryland","New Mexico","California","Louisiana","Kansas","Indiana","Delaware","Maine","Idaho","Georgia","North Carolina","Illinois","New Hampshire","Oklahoma","Minnesota","New York","South Carolina","Wyoming","Missouri","Montana","Tennessee","Connecticut","Vermont","Arizona","Virginia","Kentucky","North Dakota","Mississippi","South Dakota","Nebraska","West Virginia","Iowa","Alabama","Colorado","Arkansas","Alaska"],"pdv":[4.0,3.9404,3.9284,3.9222,3.9221,3.922,3.9187,3.9164,3.914,3.9129,3.9015,3.879,3.8771,3.8763,3.8739,3.8689,3.8645,3.8642,3.8624,3.853,3.8474,3.8453,3.8419,3.8416,3.8398,3.8384,3.8353,3.8345,3.8324,3.8312,3.8258,3.8113,3.8061,3.8015,3.7993,3.7983,3.7969,3.7839,3.7667,3.7654,3.7558,3.7449,3.7411,3.7372,3.7349,3.7339,3.7218,3.694,3.6582,3.61,3.4],"color":["#fbbf24","#f87171","#fbbf24","#f87171","#f87171","#60a5fa","#34d399","#fbbf24","#60a5fa","#f87171","#34d399","#60a5fa","#34d399","#f87171","#60a5fa","#fbbf24","#f87171","#f87171","#fbbf24","#34d399","#34d399","#fbbf24","#60a5fa","#f87171","#fbbf24","#fbbf24","#34d399","#60a5fa","#fbbf24","#34d399","#60a5fa","#fbbf24","#f87171","#34d399","#f87171","#fbbf24","#60a5fa","#60a5fa","#f87171","#fbbf24","#fbbf24","#34d399","#fbbf24","#34d399","#34d399","#fbbf24","#34d399","#fbbf24","#f87171","#fbbf24","#f87171"],"n":[1,39,254,5,36,21,83,67,5,29,88,67,72,17,14,24,33,58,64,105,92,3,16,44,159,100,102,10,77,87,62,46,23,115,56,95,8,14,15,133,120,53,82,66,93,55,99,67,64,75,30]},"2019":{"abbr":["DC","NV","WA","TX","HI","OR","MI","FL","NJ","OH","RI","UT","PA","MD","WI","LA","MA","KS","CA","IN","NY","DE","MN","GA","NC","NH","ME","OK","NM","SC","ID","WY","AZ","TN","CT","MT","IL","MO","KY","VT","ND","NE","MS","WV","IA","SD","VA","AL","CO","AR","AK"],"name":["D.C.","Nevada","Washington","Texas","Hawaii","Oregon","Michigan","Florida","New Jersey","Ohio","Rhode Island","Utah","Pennsylvania","Maryland","Wisconsin","Louisiana","Massachusetts","Kansas","California","Indiana","New York","Delaware","Minnesota","Georgia","North Carolina","New Hampshire","Maine","Oklahoma","New Mexico","South Carolina","Idaho","Wyoming","Arizona","Tennessee","Connecticut","Montana","Illinois","Missouri","Kentucky","Vermont","North Dakota","Nebraska","Mississippi","West Virginia","Iowa","South Dakota","Virginia","Alabama","Colorado","Arkansas","Alaska"],"pdv":[4.0,3.9677,3.9407,3.9279,3.9222,3.9219,3.9192,3.9176,3.9174,3.8994,3.8968,3.8905,3.8782,3.8689,3.8676,3.8657,3.8611,3.8552,3.8534,3.8471,3.8453,3.8453,3.8387,3.8386,3.8385,3.8345,3.8341,3.8318,3.826,3.8113,3.8081,3.8039,3.8,3.7996,3.7969,3.7968,3.7923,3.7875,3.7606,3.7514,3.7496,3.7434,3.7375,3.7356,3.7276,3.7203,3.7074,3.6679,3.6562,3.6233,3.4],"color":["#fbbf24","#f87171","#f87171","#fbbf24","#f87171","#f87171","#34d399","#fbbf24","#60a5fa","#34d399","#60a5fa","#f87171","#60a5fa","#fbbf24","#34d399","#fbbf24","#60a5fa","#34d399","#f87171","#34d399","#60a5fa","#fbbf24","#34d399","#fbbf24","#fbbf24","#60a5fa","#60a5fa","#fbbf24","#f87171","#fbbf24","#f87171","#f87171","#f87171","#fbbf24","#60a5fa","#f87171","#34d399","#34d399","#fbbf24","#60a5fa","#34d399","#34d399","#fbbf24","#fbbf24","#34d399","#34d399","#fbbf24","#fbbf24","#f87171","#fbbf24","#f87171"],"n":[1,17,39,254,5,36,83,67,21,88,5,29,67,24,72,64,14,105,58,92,62,3,87,159,100,10,16,77,33,46,44,23,15,95,8,56,102,115,120,14,53,93,82,55,99,66,133,67,64,75,30]},"2020":{"abbr":["DC","NJ","MD","NV","WA","MI","OH","HI","PA","FL","OR","TX","ME","NC","LA","CA","GA","RI","NM","MN","WI","IN","UT","MT","WY","MA","OK","SC","KS","VT","ID","CT","NH","MO","KY","WV","NY","SD","AL","NE","IL","VA","IA","AZ","TN","DE","CO","AR","MS","ND","AK"],"name":["D.C.","New Jersey","Maryland","Nevada","Washington","Michigan","Ohio","Hawaii","Pennsylvania","Florida","Oregon","Texas","Maine","North Carolina","Louisiana","California","Georgia","Rhode Island","New Mexico","Minnesota","Wisconsin","Indiana","Utah","Montana","Wyoming","Massachusetts","Oklahoma","South Carolina","Kansas","Vermont","Idaho","Connecticut","New Hampshire","Missouri","Kentucky","West Virginia","New York","South Dakota","Alabama","Nebraska","Illinois","Virginia","Iowa","Arizona","Tennessee","Delaware","Colorado","Arkansas","Mississippi","North Dakota","Alaska"],"pdv":[4.0,3.9991,3.9846,3.9823,3.9789,3.9696,3.9646,3.9609,3.9606,3.9564,3.9556,3.9523,3.9366,3.9333,3.9327,3.9289,3.9282,3.9272,3.9211,3.9186,3.9169,3.9163,3.9148,3.9122,3.9116,3.9066,3.9002,3.8942,3.892,3.8867,3.8806,3.875,3.8749,3.8636,3.8561,3.8474,3.8391,3.8253,3.8134,3.812,3.8087,3.807,3.8032,3.8,3.7739,3.7731,3.7656,3.74,3.7368,3.7288,3.5125],"color":["#fbbf24","#60a5fa","#fbbf24","#f87171","#f87171","#34d399","#34d399","#f87171","#60a5fa","#fbbf24","#f87171","#fbbf24","#60a5fa","#fbbf24","#fbbf24","#f87171","#fbbf24","#60a5fa","#f87171","#34d399","#34d399","#34d399","#f87171","#f87171","#f87171","#60a5fa","#fbbf24","#fbbf24","#34d399","#60a5fa","#f87171","#60a5fa","#60a5fa","#34d399","#fbbf24","#fbbf24","#60a5fa","#34d399","#fbbf24","#34d399","#34d399","#fbbf24","#34d399","#f87171","#fbbf24","#fbbf24","#f87171","#fbbf24","#fbbf24","#34d399","#f87171"],"n":[1,21,24,17,39,83,88,5,67,67,36,254,16,100,64,58,159,5,33,87,72,92,29,56,23,14,77,46,105,14,44,8,10,115,120,55,62,66,67,93,102,133,99,15,95,3,64,75,82,53,30]},"2021":{"abbr":["DC","NJ","MD","NV","WA","DE","MI","OH","HI","PA","OR","TX","FL","ME","LA","WI","CA","GA","RI","NM","IN","KS","NC","MN","MT","UT","WY","OK","SC","VT","ID","AZ","CT","MA","NH","KY","NY","WV","MS","SD","NE","AL","IL","VA","IA","CO","TN","MO","AR","ND","AK"],"name":["D.C.","New Jersey","Maryland","Nevada","Washington","Delaware","Michigan","Ohio","Hawaii","Pennsylvania","Oregon","Texas","Florida","Maine","Louisiana","Wisconsin","California","Georgia","Rhode Island","New Mexico","Indiana","Kansas","North Carolina","Minnesota","Montana","Utah","Wyoming","Oklahoma","South Carolina","Vermont","Idaho","Arizona","Connecticut","Massachusetts","New Hampshire","Kentucky","New York","West Virginia","Mississippi","South Dakota","Nebraska","Alabama","Illinois","Virginia","Iowa","Colorado","Tennessee","Missouri","Arkansas","North Dakota","Alaska"],"pdv":[4.0,3.9991,3.9846,3.9825,3.98,3.9703,3.9688,3.9646,3.9609,3.9605,3.9563,3.9519,3.942,3.941,3.9362,3.9294,3.9289,3.9272,3.9272,3.9256,3.9231,3.9197,3.9197,3.9177,3.9146,3.9145,3.9121,3.8995,3.8934,3.8916,3.8755,3.875,3.875,3.8622,3.8578,3.8576,3.8496,3.8462,3.8276,3.825,3.8206,3.8172,3.8091,3.8072,3.8024,3.793,3.7747,3.7483,3.7417,3.734,3.5542],"color":["#fbbf24","#60a5fa","#fbbf24","#f87171","#f87171","#fbbf24","#34d399","#34d399","#f87171","#60a5fa","#f87171","#fbbf24","#fbbf24","#60a5fa","#fbbf24","#34d399","#f87171","#fbbf24","#60a5fa","#f87171","#34d399","#34d399","#fbbf24","#34d399","#f87171","#f87171","#f87171","#fbbf24","#fbbf24","#60a5fa","#f87171","#f87171","#60a5fa","#60a5fa","#60a5fa","#fbbf24","#60a5fa","#fbbf24","#fbbf24","#34d399","#34d399","#fbbf24","#34d399","#fbbf24","#34d399","#f87171","#fbbf24","#34d399","#fbbf24","#34d399","#f87171"],"n":[1,21,24,17,39,3,83,88,5,67,36,254,67,16,64,72,58,159,5,33,92,105,100,87,56,29,23,77,46,14,44,15,8,14,10,120,62,55,82,66,93,67,102,133,99,64,95,115,75,53,30]},"2022":{"abbr":["DC","MD","NV","MA","WA","DE","MI","OH","HI","PA","OR","TX","FL","ME","NC","RI","GA","IN","LA","WI","KS","MN","UT","WY","MT","CA","OK","VT","NJ","ID","KY","WV","NH","NY","MS","NE","SD","IA","IL","SC","VA","CO","NM","AZ","TN","MO","ND","AR","AL","CT","AK"],"name":["D.C.","Maryland","Nevada","Massachusetts","Washington","Delaware","Michigan","Ohio","Hawaii","Pennsylvania","Oregon","Texas","Florida","Maine","North Carolina","Rhode Island","Georgia","Indiana","Louisiana","Wisconsin","Kansas","Minnesota","Utah","Wyoming","Montana","California","Oklahoma","Vermont","New Jersey","Idaho","Kentucky","West Virginia","New Hampshire","New York","Mississippi","Nebraska","South Dakota","Iowa","Illinois","South Carolina","Virginia","Colorado","New Mexico","Arizona","Tennessee","Missouri","North Dakota","Arkansas","Alabama","Connecticut","Alaska"],"pdv":[4.0,3.9881,3.9826,3.9823,3.9803,3.9703,3.9695,3.9646,3.961,3.9592,3.9563,3.9526,3.942,3.941,3.935,3.9272,3.9246,3.9245,3.924,3.9207,3.9187,3.9184,3.9165,3.9137,3.9128,3.9052,3.8978,3.8879,3.8741,3.8741,3.8538,3.85,3.8494,3.8392,3.826,3.8252,3.8172,3.8117,3.8098,3.8093,3.8063,3.8008,3.7984,3.7917,3.7741,3.7486,3.7404,3.7267,3.6922,3.625,3.55],"color":["#fbbf24","#fbbf24","#f87171","#60a5fa","#f87171","#fbbf24","#34d399","#34d399","#f87171","#60a5fa","#f87171","#fbbf24","#fbbf24","#60a5fa","#fbbf24","#60a5fa","#fbbf24","#34d399","#fbbf24","#34d399","#34d399","#34d399","#f87171","#f87171","#f87171","#f87171","#fbbf24","#60a5fa","#60a5fa","#f87171","#fbbf24","#fbbf24","#60a5fa","#60a5fa","#fbbf24","#34d399","#34d399","#34d399","#34d399","#fbbf24","#fbbf24","#f87171","#f87171","#f87171","#fbbf24","#34d399","#34d399","#fbbf24","#fbbf24","#60a5fa","#f87171"],"n":[1,24,17,14,39,3,83,88,5,67,36,254,67,16,100,5,159,92,64,72,105,87,29,23,56,58,77,14,21,44,120,55,10,62,82,93,66,99,102,46,133,64,33,15,95,115,53,75,67,8,30]}};
+const YEARS  = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022];
+
+const BAR_H   = 26;   // bar row height px
+const BAR_GAP = 5;    // gap between rows px
+const SHOW_N  = 30;   // show top N states
+
+// Pre-collect all state abbrs for stable DOM elements
+const ALL_ABBRS = [...new Set(Object.values(FRAMES).flatMap(f => f.abbr))].sort();
+
+const barsEl = document.getElementById('bars');
+barsEl.style.height = (SHOW_N * (BAR_H + BAR_GAP)) + 'px';
+
+// Create one DOM row per state (all hidden initially)
+const rowEls = {};
+ALL_ABBRS.forEach(abbr => {
+  const row = document.createElement('div');
+  row.className = 'bar-row';
+  row.style.height = BAR_H + 'px';
+  row.style.top = '0px';
+  row.style.opacity = '0';
+  row.innerHTML = `
+    <div class="bar-rank" id="rank-${abbr}">—</div>
+    <div class="bar-abbr">${abbr}</div>
+    <div class="bar-track">
+      <div class="bar-fill" id="fill-${abbr}" style="width:0%"></div>
+      <div class="bar-label" id="lbl-${abbr}"></div>
+    </div>
+    <div class="bar-score" id="score-${abbr}">—</div>
+  `;
+  barsEl.appendChild(row);
+  rowEls[abbr] = row;
+});
+
+function renderYear(yi) {
+  const yr  = YEARS[yi];
+  const fr  = FRAMES[String(yr)];
+  const N   = fr.abbr.length;
+  const maxPdv = Math.max(...fr.pdv);
+  const minPdv = Math.min(...fr.pdv);
+
+  // Disable transitions briefly on first render
+  const isFirst = yi === 0;
+
+  fr.abbr.forEach((abbr, i) => {
+    const rank = i + 1;
+    const pdv  = fr.pdv[i];
+    const col  = fr.color[i];
+    const pct  = ((pdv - minPdv) / (maxPdv - minPdv) * 88 + 8).toFixed(1);  // 8–96%
+
+    const row   = rowEls[abbr];
+    const fillEl  = document.getElementById('fill-' + abbr);
+    const rankEl  = document.getElementById('rank-' + abbr);
+    const scoreEl = document.getElementById('score-' + abbr);
+    const lblEl   = document.getElementById('lbl-'  + abbr);
+
+    if (rank <= SHOW_N) {
+      row.style.opacity = '1';
+      row.style.top     = ((rank - 1) * (BAR_H + BAR_GAP)) + 'px';
+    } else {
+      row.style.opacity = '0';
+      row.style.top     = ((SHOW_N) * (BAR_H + BAR_GAP)) + 'px';
+    }
+
+    fillEl.style.width           = pct + '%';
+    fillEl.style.backgroundColor = col;
+    rankEl.textContent           = '#' + rank;
+    scoreEl.textContent          = pdv.toFixed(3);
+    lblEl.textContent            = fr.name[i];
+  });
+
+  document.getElementById('year-badge').textContent = yr;
+  document.getElementById('yr-bg').textContent      = yr;
+  document.getElementById('year-slider').value      = yi;
+}
+
+// Initial render without transitions
+barsEl.querySelectorAll('.bar-row').forEach(r => {
+  r.style.transition = 'none';
+  r.querySelector('.bar-fill').style.transition = 'none';
+});
+renderYear(0);
+// Re-enable transitions after paint
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  barsEl.querySelectorAll('.bar-row').forEach(r => {
+    r.style.transition = 'top 0.75s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease';
+    r.querySelector('.bar-fill').style.transition = 'width 0.75s cubic-bezier(0.4,0,0.2,1), background-color 0.4s ease';
+  });
+}));
+
+let curIdx = 0, timer = null;
+
+function goTo(i) {
+  curIdx = i;
+  renderYear(i);
+}
+
+function getMs() { return +document.getElementById('speed-sel').value; }
+
+function startPlay() {
+  document.getElementById('btn-play').textContent = '⏸ Pause';
+  timer = setInterval(() => { goTo((curIdx + 1) % YEARS.length); }, getMs());
+}
+function stopPlay() {
+  clearInterval(timer); timer = null;
+  document.getElementById('btn-play').textContent = '▶ Play';
+}
+
+document.getElementById('btn-play').addEventListener('click', () => timer ? stopPlay() : startPlay());
+document.getElementById('year-slider').addEventListener('input', e => { stopPlay(); goTo(+e.target.value); });
+document.getElementById('speed-sel').addEventListener('change', () => { if (timer) { stopPlay(); startPlay(); } });
+
+setTimeout(startPlay, 1200);
+</script>
+</body>
+</html>
