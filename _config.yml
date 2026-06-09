@@ -146,7 +146,7 @@ og_description           :  # Social media default site image description
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
   type                   : Person # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
+  name                   : "Siqi Wei" # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
 
 # Analytics
