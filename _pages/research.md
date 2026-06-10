@@ -127,14 +127,4 @@ with Xiaoqiong Wang
 with Seong K. Byun and Zhilu Lin  
 *Journal of Corporate Finance*, 69, 102012, 2021
 
----
 
-**[9]** "Shareholder litigation and the risk incentive effect of executive compensation: A re-examination" &nbsp;<a href="https://doi.org/10.1016/j.frl.2020.101790"><i class="fas fa-link"></i> DOI</a>  
-with Isarin Durongkadej and Ramesh Rao  
-*Finance Research Letters*, 41, 101790, 2021
-
----
-
-**[10]** "COVID-19 and women-led businesses around the world" &nbsp;<a href="https://doi.org/10.1016/j.frl.2021.102012"><i class="fas fa-link"></i> DOI</a>  
-with Yu Liu and Jian Xu  
-*Finance Research Letters*, 43, 102012, 2021
