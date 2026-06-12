@@ -56,7 +56,7 @@ This paper develops a dynamic theory of childhood human-capital formation when a
 
 <a id="wp3"></a>
 **[3] "The Legibility Premium: Public Data Visibility and the Allocation of Competitive Federal Grants"**  
-with Xiaoyang Zhu
+with Xiaoyang Zhu &nbsp; <a href="/files/PDV_Wei_and_Zhu.pdf"><i class="fas fa-file-pdf" style="color:red;"></i> PDF</a> &nbsp;
 
 <p style="margin-top:1em;"><em>Not all counties are equally visible to the federal government.</em></p>
 <div style="width:100%; max-width:720px; border-radius:6px; border:1px solid #ddd; margin-top:0.3em; overflow:hidden;">
