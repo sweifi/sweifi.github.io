@@ -24,12 +24,13 @@ We examine whether the adoption of automation technologies influences environmen
 </details>
 
 **Conference Presentations:**
+- SFA Annual Meeting, 2026 (Scheduled)
 - MRS International Risk Conference, 2026
 - American Accounting Association (AAA) Annual Meeting, 2026
 - CICF – China International Conference in Finance, Hong Kong, 2026
 - FMA (Europe) Annual Meeting, 2026
 - SWFA Annual Meeting, 2026
-- International Behavioral Finance Conference, 2025
+- Chicago Booth International Behavioral Finance Conference, 2025
 - FMA Annual Meeting, 2025
 - University of Richmond Seminar, 2025
 
