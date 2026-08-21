@@ -13,7 +13,7 @@ redirect_from:
  
 ---
 
-Welcome! I am the **Stelmar Family Faculty Fellow and Associate Professor of Finance** at [David Nazarian College of Business and Economics](https://www.csun.edu/nazarian) at California State University Northridge. I also hold the  **Mary Jean Scheuer Endowed Chair in Finance**.
+Welcome! I am the **Stelmar Family Faculty Fellow and Associate Professor of Finance** at [David Nazarian College of Business and Economics](https://www.csun.edu/nazarian) at California State University Northridge, where I also hold the  **Mary Jean Scheuer Endowed Chair in Finance**.
 
 
 
