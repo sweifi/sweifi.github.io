@@ -6,7 +6,11 @@ redirect_from:
   - /about/
   - /about.html
 ---
+ 
 
+<p style="font-size:1.2em; font-weight:normal; color:#9ca3af; margin-top:-0.6em; margin-bottom:0.8em;">Mary Jean Scheuer Endowed Chair in Finance</p>
+
+ 
 ---
 
 Welcome! I am the **Stelmar Family Faculty Fellow** and **Associate Professor of Finance** at [David Nazarian College of Business and Economics](https://www.csun.edu/nazarian) at California State University Northridge. 
