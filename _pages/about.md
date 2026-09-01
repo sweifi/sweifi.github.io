@@ -8,7 +8,7 @@ redirect_from:
 ---
  
 
-<p style="font-size:1.2em; font-weight:normal; color:#9ca3af; margin-top:-0.6em; margin-bottom:0.8em;">Mary Jean Scheuer Endowed Chair in Finance</p>
+<p style="font-size:1.2em; font-weight:normal; color:#4b5563; margin-top:-0.6em; margin-bottom:0.8em;">Mary Jean Scheuer Endowed Chair in Finance</p>
 
  
 ---
